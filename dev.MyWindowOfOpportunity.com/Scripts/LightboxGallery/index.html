@@ -1,0 +1,102 @@
+﻿<!--
+* Lightbox Gallery v1.0 (https://kawshar.github.io/lightboxgallery/)  (https://github.com/kawshar/lightboxgallery)
+* Copyright 2017 Kawshar Ahmed
+* Licensed GPLv3 https://www.gnu.org/licenses/gpl-3.0.en.html
+-->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lightbox Gallery Demo</title>
+
+  <link rel="stylesheet" href="css/lightboxgallery-min.css">
+
+</head>
+
+<body>
+  
+
+
+
+
+
+  <div class="container">
+      <div class="lightboxgallery-gallery clearfix">
+        
+
+
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/noah-hinton.jpg" data-title="Noah Hinton" data-alt="Noah Hinton" data-desc="A lightweight jQuery lightbox gallery plugin.">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/noah-hinton_thumb.jpg" title="Noah Hinton" alt="Noah Hinton">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Noah Hinton</span>
+            </div>
+          </div>
+        </a>
+        
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/matheus-ferrero.jpg" data-title="Matheus Ferrero" data-alt="Matheus Ferrero" data-desc="">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/matheus-ferrero_thumb.jpg" title="Matheus Ferrero" alt="Matheus Ferrero">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Matheus Ferrero</span>
+            </div>
+          </div>
+        </a>
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/meyer-aidan.jpg" data-title="Meyer Aidan" data-alt="Meyer Aidan" data-desc="">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/meyer-aidan_thumb.jpg" title="Meyer Aidan" alt="Meyer Aidan">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Meyer Aidan</span>
+            </div>
+          </div>
+        </a>
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/felix-russell-saw.jpg" data-title="Felix Russell Saw" data-alt="Felix Russell Saw" data-desc="">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/felix-russell-saw_thumb.jpg" title="Felix Russell Saw" alt="Felix Russell Saw">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Felix Russell Saw</span>
+            </div>
+          </div>
+        </a>
+        
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/brooke-cagle.jpg" data-title="Brooke Cagle" data-alt="Brooke Cagle" data-desc="">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/brooke-cagle_thumb.jpg" title="Brooke Cagle" alt="Brooke Cagle">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Brooke Cagle</span>
+            </div>
+          </div>
+        </a>
+        <a class="lightboxgallery-gallery-item" target="_blank" href="https://kawshar.github.io/lightboxgallery/alexandru-zdrobau.jpg" data-title="Alexandru Zdrobau" data-alt="Alexandru Zdrobau" data-desc="">
+          <div>
+            <img src="https://kawshar.github.io/lightboxgallery/alexandru-zdrobau_thumb.jpg" title="Alexandru Zdrobau" alt="Alexandru Zdrobau">
+            <div class="lightboxgallery-gallery-item-content">
+              <span class="lightboxgallery-gallery-item-title">Alexandru Zdrobau</span>
+            </div>
+          </div>
+        </a>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/lightboxgallery-min.js"></script>
+  <script type="text/javascript">
+  jQuery(function($) {
+    $(document).on('click', '.lightboxgallery-gallery-item', function(event) {
+      event.preventDefault();
+      $(this).lightboxgallery({
+        showCounter: true,
+        showTitle: true,
+        showDescription: true
+      });
+    });
+  });
+  </script>
+</body>
+</html>

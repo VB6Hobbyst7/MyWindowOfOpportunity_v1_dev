@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.WebHooks.Receivers.Stripe</name>
+    </assembly>
+    <members>
+        <member name="T:System.Web.Http.HttpConfigurationExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:System.Web.Http.HttpConfigurationExtensions.InitializeReceiveStripeWebHooks(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes support for receiving Stripe WebHooks. 
+            Set the '<c>MS_WebHookReceiverSecret_Stripe</c>' application setting to the application key defined in Stripe.
+            The corresponding WebHook URI is of the form '<c>https://&lt;host&gt;/api/webhooks/incoming/stripe/{id}</c>'.
+            As there is no code embedded in the URI, this mode will cause a follow-up HTTP GET request to Stripe to 
+            get the actual WebHook data.
+            For details about Stripe WebHooks, see <c>https://stripe.com/docs/webhooks</c>.
+            </summary>
+            <param name="config">The current <see cref="T:System.Web.Http.HttpConfiguration"/>config.</param>
+        </member>
+        <member name="M:System.Web.Http.HttpConfigurationExtensions.InitializeReceiveStripeDirectWebHooks(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes support for receiving Stripe WebHooks without any follow-up HTTP GET request to get the WebHook data. 
+            A sample WebHook URI is '<c>https://&lt;host&gt;/api/webhooks/incoming/stripe/{id}?code=83699ec7c1d794c0c780e49a5c72972590571fd8</c>'.
+            For security reasons the WebHook URI must be an <c>https</c> URI and contain a 'code' query parameter with the
+            same value as configured in the '<c>MS_WebHookReceiverSecret_Stripe</c>' application setting.
+            The 'code' parameter must be between 32 and 128 characters long.
+            For details about Stripe WebHooks, see <c>https://stripe.com/docs/webhooks</c>.
+            </summary>
+            <param name="config">The current <see cref="T:System.Web.Http.HttpConfiguration"/>config.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.Receiver_BadBody">
+            <summary>
+              Looks up a localized string similar to The HTTP request body did not contain a required &apos;{0}&apos; property..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.Receiver_BadId">
+            <summary>
+              Looks up a localized string similar to The ID &apos;{0}&apos; could not be resolved for an actual event..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.Receiver_TestEvent">
+            <summary>
+              Looks up a localized string similar to Received a Stripe Test Event -- ignoring..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.StripeReceiverResources.Receiver_TestEvent_Process">
+            <summary>
+              Looks up a localized string similar to Received a Stripe Test Event..
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.StripeEvent">
+            <summary>
+            Contains information sent in a WebHook notification from Stripe, see
+            '<c>https://stripe.com/docs/api#event_object</c>' for details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.Id">
+            <summary>
+            Gets or sets the id of the WebHook event
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.Object">
+            <summary>
+            Gets or sets the object. Value is "event".
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.ApiVersion">
+            <summary>
+            Gets or sets the Stripe API version used to render data. 
+            Note: this property is populated for events on or after October 31, 2014.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.Created">
+            <summary>
+            Gets or sets the time at which the alert was triggered. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.Data">
+            <summary>
+            Gets or sets the hash containing data associated with the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.LiveMode">
+            <summary>
+            Gets or sets the boolean property to denote if this is a live event or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.PendingWebHooks">
+            <summary>
+            Gets or sets the number of WebHooks yet to be delivered successfully 
+            (return a 20x response) to the URLs you’ve specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.Request">
+            <summary>
+            Gets or sets ID of the API request that caused the event. 
+            If null, the event was automatic (e.g. Stripe’s automatic subscription handling). 
+            Request logs are available in the dashboard but currently not in the API. 
+            Note: this property is populated for events on or after April 23, 2013.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEvent.EventType">
+            <summary>
+            Gets or sets the description of the event: e.g. invoice.created, charge.refunded, etc.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.StripeEventData">
+            <summary>
+            Contains information sent in a WebHook notification from Stripe, see
+            '<c>https://stripe.com/docs/api#event_object</c>' for details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEventData.Object">
+            <summary>
+            Gets or sets the event data object. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeEventData.PreviousAttributes">
+            <summary>
+            Gets or sets the hash containing the names of the attributes that have changed 
+            and their previous values (only sent along with *.updated events). 
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.StripeWebHookReceiver">
+            <summary>
+            Provides an <see cref="T:Microsoft.AspNet.WebHooks.IWebHookReceiver"/> implementation which supports WebHooks generated by Stripe. 
+            Set the '<c>MS_WebHookReceiverSecret_Stripe</c>' application setting to the application key defined in Stripe.
+            The corresponding WebHook URI is of the form '<c>https://&lt;host&gt;/api/webhooks/incoming/stripe/{id}</c>'.
+            For details about Stripe WebHooks, see <c>https://stripe.com/docs/webhooks</c>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.WebHooks.StripeWebHookReceiver"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.WebHooks.StripeWebHookReceiver"/> class with a given 
+            <paramref name="httpClient"/>. This constructor is used for testing purposes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.ReceiverName">
+            <summary>
+            Gets the receiver name for this receiver.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.ReceiveAsync(System.String,System.Web.Http.Controllers.HttpRequestContext,System.Net.Http.HttpRequestMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.StripeWebHookReceiver.GetEventDataAsync(System.Net.Http.HttpRequestMessage,System.String,System.String)">
+            <summary>
+            Gets the event data for this ID from the authenticated source so that we know that it is valid.
+            </summary>
+        </member>
+    </members>
+</doc>

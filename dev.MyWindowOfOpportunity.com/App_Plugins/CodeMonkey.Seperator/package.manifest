@@ -1,0 +1,35 @@
+﻿{
+   propertyEditors: [{ 
+      alias: "CodeMonkey.Seperator",
+      name: "CM Seperator",
+      editor: {
+        view: "~/App_Plugins/CodeMonkey.Seperator/Seperator.html",
+        hideLabel: true
+      },
+      prevalues: {
+          fields: [
+          {
+              label: "Default text",
+              description: "This value will be used as default if the property name is blank.",
+              key: "seperatorText",
+              view: "textstring"
+          },
+          {
+              label: "Text color",
+              description: "Enter a valid CSS color. Default color is '#343434'",
+              key: "colorText",
+              view: "textstring"
+          },
+          {
+              label: "Background color",
+              description: "Enter a valid CSS color. Default color is '#F8F8F8'",
+              key: "colorBackground",
+              view: "textstring"
+          }
+        ]
+      }
+   }],
+   javascript: [
+     '~/App_Plugins/CodeMonkey.Seperator/Seperator.Controller.js'
+   ] 
+}

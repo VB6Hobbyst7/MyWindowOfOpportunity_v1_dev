@@ -1,0 +1,15 @@
+﻿My Window of Opportunity- Campaign Invitation
+
+You have been invited to become a member of the "My Window of Opportunity" campaign [NAME].
+
+To proceed, simply click the "Verify" button below.
+
+Verify Invitation! [1]
+
+Please note: This invitation is valid for only 48 hours. If this invitation is not accepted by the end of this timefrmae, a new invitation will need to be initiated by the campaign administrator.
+
+
+Copyright [YEAR] Fifth Laboratories LLC
+A Fifth Labs Company
+
+1. [LINK]

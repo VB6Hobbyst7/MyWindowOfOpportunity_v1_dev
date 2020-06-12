@@ -1,0 +1,71 @@
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="SearchPanel.ascx.vb" Inherits="UserControls_Home_SearchPanel" %>
+
+<asp:MultiView runat="server" ID="mvSearchPanels">
+    <asp:View runat="server" ID="vFullSize">
+        <div class="row shadow searchPnl full">
+            <div class="small-20 small-push-1 medium-22 left">
+                <div class="row">
+                    <div class="columns">
+                        <h2>SEARCH FOR A CAMPAIGN</h2>
+                    </div>
+                </div>
+                <div class="row collapse" data-equalizer>
+                    <div class="small-20 medium-21 large-22 left searchContainer" data-equalizer-watch>
+                        <asp:TextBox runat="server" ID="txbSearchCampaigns_full" Text="Search Campaigns" CssClass="searchTextbox" />
+                    </div>
+                    <div class="searchBtn left" data-equalizer-watch>
+                        <asp:LinkButton runat="server" ID="lbtnSearchCampaigns_full">                       
+                            <img src="/Images/Icons/magnifyingGlass_lg.png" />                       
+                        </asp:LinkButton>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="small-3 medium-2 right logoContainer">
+                <img src="/Images/Logo/transparentLogo.png" />
+            </div>
+        </div>
+    </asp:View>
+
+    <asp:View runat="server" ID="vMacroSize">
+        <div class="row shadow searchPnl macro">
+            <div class="small-24 medium-21 large-22 columns">
+                <div class="row collapse" data-equalizer>
+                    <div class="medium-14 large-10 columns text-center">
+                        <h2>SEARCH FOR A CAMPAIGN</h2>
+                    </div>
+                    <div class="small-21 medium-8 large-12  columns searchContainer">
+                        <asp:TextBox runat="server" ID="txbSearchCampaigns_macro" Text="Search Campaigns" CssClass="searchTextbox" data-equalizer-watch />
+                    </div>
+                    <asp:LinkButton runat="server" ID="lbtnSearchCampaigns_macro">
+                        <div class="small-3 medium-2 large-1 columns end text-center searchBtn" data-equalizer-watch>
+                            <img src="/Images/Icons/magnifyingGlass_lg.png" />
+                        </div>
+                    </asp:LinkButton>
+                </div>
+                <br class="show-for-small-down" />
+            </div>
+            <div class="medium-3 large-2 columns text-right hide-for-small-down">
+                <img src="/Images/Logo/smallLogo_transparent.png" />
+            </div>
+        </div>
+    </asp:View>
+
+    <asp:View runat="server" ID="vMicroSize">
+        <div class="row collapse searchPnl micro  right">
+            <div class="columns">
+                <asp:TextBox runat="server" ID="txbSearchCampaigns_micro" CssClass="left searchTextbox" Text="Search Campaigns" />
+                <asp:LinkButton runat="server" ID="lbtnSearchCampaigns_micro" CssClass="left">
+                    <div class="searchBtn">
+                        <img src="/Images/Icons/searchGlass_sm.png" />
+                    </div>
+                </asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </asp:View>
+</asp:MultiView>

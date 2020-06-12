@@ -1,0 +1,410 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="EditAccount.master.vb" Inherits="Masterpages_EditAccount" EnableViewState="true" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx"          TagName="TextBox_Animated"          TagPrefix="uc" %>
+<%@ Register Src="/UserControls/DateDropDowns.ascx"             TagName="DateDropDowns"             TagPrefix="uc" %>
+<%@ Register Src="/UserControls/AlertMsg.ascx"                  TagName="AlertMsg"                  TagPrefix="uc" %>
+<%@ Register Src="/UserControls/Banner.ascx"                    TagName="Banner"                    TagPrefix="uc" %>
+<%@ Register Src="/UserControls/UserImageMngr.ascx"             TagName="UserImageMngr"             TagPrefix="uc" %>
+<%@ Register Src="/UserControls/PledgeListPnl_AcctEdit.ascx"    TagName="PledgeListPnl_AcctEdit"    TagPrefix="uc" %>
+<%@ Register Src="/UserControls/NavMinor.ascx"                  TagName="NavMinor"                  TagPrefix="uc" %>
+<%@ Register Src="/UserControls/MemberRatingCampaigns.ascx"     TagName="MemberRatingCampaigns"     TagPrefix="uc" %>
+<%@ Register Src="/UserControls/ManageCreditcard.ascx"          TagName="ManageCreditcard"          TagPrefix="uc" %>
+<%@ Reference Control="~/UserControls/PledgeListPnl_AcctEdit.ascx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" runat="Server"></asp:Content>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="Server">
+    <uc:Banner runat="server" ID="ucBanner" />
+    <br />
+    <div class="row">
+        <div class="small-24 columns">
+            <h1>Edit Account</h1>
+        </div>
+    </div>
+
+    <div id="editAccount">
+        <div class="row">
+            <div class="columns">
+                
+                <uc:AlertMsg runat="server" ID="ucAlertMsgPnl_Success" MessageType="Success" AlertMsg="Saved Successfully" />
+                <uc:AlertMsg runat="server" ID="ucAlertMsgPnl_Error"   MessageType="Alert"   AlertMsg="Unable to save your updated information" />
+
+                <div class="organicTabs">
+                    <ul class="nav hide-for-medium-down">
+                        <asp:PlaceHolder runat="server" ID="phCredentials">
+                            <li><a href="#credentails" class="current">CREDENTIALS</a></li>
+                        </asp:PlaceHolder>                        
+                        <li><a href="#generalInfo">GENERAL</a></li>
+                        <li><a href="#demographics">DEMOGRAPHICS</a></li>
+                        <li><a href="#profile">PROFILE</a></li>
+                        <li><a href="#pledges">PLEDGES</a></li>
+                        <li><a href="#ratings">RATINGS</a></li>
+                        <li data-hideupdatebtn="true"><a href="#creditcard">CREDIT CARD</a></li>
+                    </ul>
+                    <ul class="nav mbl small-block-grid-1 medium-block-grid-4 show-for-medium-down">
+                        <asp:PlaceHolder runat="server" ID="phCredentialsMbl">
+                            <li><a href="#credentails" class="current">CREDENTIALS</a></li>
+                        </asp:PlaceHolder>                        
+                        <li><a href="#generalInfo">GENERAL</a></li>
+                        <li><a href="#demographics">DEMOGRAPHICS</a></li>
+                        <li><a href="#profile">PROFILE</a></li>
+                        <li><a href="#pledges">PLEDGES</a></li>
+                        <li><a href="#ratings">RATINGS</a></li>
+                        <li data-hideupdatebtn="true"><a href="#creditcard">CREDIT CARD</a></li>
+                    </ul>
+
+                    <div class="list-wrap">
+
+                        <asp:PlaceHolder runat="server" ID="phCredentialsPnl">
+                            <ul id="credentails">
+                                <li>
+                                    <div class="row">
+                                        <div class="columns">
+                                            <h3 class="text-right">CREDENTIALS</h3>
+                                            <br />
+
+                                            <%--<uc:AlertMsg runat="server" ID="ucAlertMsg_Success" AlertMsg="Saved Successfully" MessageType="Success" Visible="false" />
+                                            <uc:AlertMsg runat="server" ID="ucAlertMsg_Error" AlertMsg="Unable to save your updated information" MessageType="Alert" Visible="false" />--%>
+
+                                            <div class="row" data-equalizer data-equalizer-mq="large-up">
+
+                                                <div class="large-12 columns">
+                                                    <fieldset class="outlinePanel" data-equalizer-watch>
+                                                        <legend>Login Credentials</legend>
+                                                        <div class="row">
+                                                            <div class="large-24 columns">
+                                                                <p>When updating your login credentials, your User Id and Email must match.<br />
+                                                                <span class="smaller">*Note: After updating your login credentials you will be logged out and will need to log in using your new credentials.</span></p>
+                                                            </div>
+                                                            <div class="large-24 columns alertMsg">
+                                                                <asp:CompareValidator runat="server" ID="cvMatchingIdEmail" ErrorMessage="Both fields must match." ControlToCompare="txbUserId" ControlToValidate="txbEmail" ValidationGroup="validate" Display="Dynamic" SetFocusOnError="True" Text="*Both your user name and email must match" />
+                                                            </div>
+                                                            <div class="large-24 columns">
+                                                                <uc:TextBox_Animated runat="server" ID="txbUserId" CausesValidation="true" ValidationGroup="validate" Title="User Id" ErrorMessage="Email is required." />
+                                                            </div>
+                                                            <div class="large-24 columns">
+                                                                <uc:TextBox_Animated runat="server" ID="txbEmail" additionalClass="txbEmail" CausesValidation="true" ValidationGroup="validate" Title="Email" ErrorMessage="Email is required." />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+
+                                                <div class="large-12 columns">
+                                                    <%--
+                                                    <div class="accordion defaultClosed changePasswordAccordion">
+                                                        <h3>Change Password</h3>
+                                                    </div>--%>
+                                                    <br class="show-for-medium-down" />
+                                                    <br class="show-for-medium-down" />
+                                                    <fieldset class="secondary outlinePanel" data-equalizer-watch>
+                                                        <legend>Change Password</legend>
+                                                        <div class="changePasswordPnl">
+                                                            <div class="row">
+                                                                <div class="large-12 columns">
+                                                                    <uc:TextBox_Animated runat="server" ID="txbPassword" Title="Password" additionalClass="txbPassword" />
+                                                                </div>
+                                                                <div class="large-12 columns">
+                                                                    <uc:TextBox_Animated runat="server" ID="txbPasswordReenter" Title="Re-enter Password" additionalClass="txbPasswordReenter" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="passwordValidations">
+                                                                <div class="row parameter01">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        6+ characters
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row parameter02">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        At least 1 uppercase letter
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row parameter03">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        At least 1 lowercase letter
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row parameter04">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        At least 1 number
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row parameter05">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        Both password match
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row parameter06">
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns pwd1">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                    <div class="small-16 medium-16 large-16 medium-push-2 columns text-center">
+                                                                        Alpha-Numeric Only
+                                                                    </div>
+                                                                    <div class="small-4 medium-2 medium-push-2 large-2 large-push-2 columns end pwd2 text-right">
+                                                                        <img alt="valid" src="/Images/Icons/validation_circle_valid.png" class="valid hide" />
+                                                                        <img alt="invalid" src="/Images/Icons/validation_circle_invalid.png" class="invalid" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </asp:PlaceHolder>
+
+                        <ul id="generalInfo" class="hide">
+                            <li>
+                                <div class="row">
+                                    <div class="columns">
+
+                                        <div class="row">
+                                            <h3 class="text-right">GENERAL INFO</h3>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="large-8 columns">
+
+                                                <fieldset class="outlinePanel">
+                                                    <legend>User Name</legend>
+                                                    <uc:TextBox_Animated runat="server" ID="txbFirstName" additionalClass="txbFirstName" CausesValidation="true" ValidationGroup="validate" Title="First Name" ErrorMessage="First name is required." />
+                                                    <uc:TextBox_Animated runat="server" ID="txbLastName" additionalClass="txbLastName" ClientIDMode="Static" CausesValidation="true" ValidationGroup="validate" Title="Last Name" ErrorMessage="Last name is required." />
+                                                </fieldset>
+
+                                                <br />
+                                                <fieldset class="outlinePanel secondary">
+                                                    <legend>Alternative Email</legend>
+                                                    <uc:TextBox_Animated runat="server" ID="txbAltEmail" TextMode="_Email" additionalClass="txbAltEmail" Title="Alternative Email"    ErrorMessage="" />
+                                                </fieldset>
+
+                                            </div>
+
+                                            <div class="large-16 columns">
+                                                <br class="show-for-medium-down" />
+                                                <uc:TextBox_Animated runat="server" ID="txbDescription" CausesValidation="false" Title="Self Description" isMultiLine="true" />
+                                            </div>
+                                        </div>
+
+                                        <br />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul id="demographics" class="hide">
+                            <li>
+                                <h3 class="text-right">DEMOGRAPHICS</h3>
+                                <div class="row">
+                                    <div class="small-24 medium-12 large-12 columns">
+                                        <br class="show-for-small-down" />
+                                        <fieldset class="outlinePanel">
+                                            <legend>Billing Address</legend>
+
+                                            <div class="row">
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbBillingAddress01" additionalClass="txbBillingAddress01" CausesValidation="false" Title="Address 1" />
+                                                </div>
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbBillingAddress02" additionalClass="txbBillingAddress02" CausesValidation="false" Title="Address 2" />
+                                                </div>
+
+
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbBillingCity" additionalClass="txbBillingCity" CausesValidation="false" Title="City" />
+                                                </div>
+                                                <div class="large-6 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbBillingState" additionalClass="txbBillingState" CausesValidation="false" Title="State/Providence" />
+                                                </div>
+                                                <div class="large-6 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbBillingPostalCode" additionalClass="txbBillingPostalCode" CausesValidation="false" Title="Postal Code" />
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="small-24 medium-12 large-12 columns">
+                                        <br class="show-for-small-down" />
+                                        <br class="show-for-small-down" />
+                                        <fieldset class="outlinePanel secondary">
+                                            <legend>Shipping Address</legend>
+                                            <div class="row">
+
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbShippingAddress01" CausesValidation="false" Title="Address 1" />
+                                                </div>
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbShippingAddress02" CausesValidation="false" Title="Address 2" />
+                                                </div>
+
+
+                                                <div class="large-12 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbShippingCity" CausesValidation="false" Title="City" />
+                                                </div>
+                                                <div class="large-6 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbShippingState" CausesValidation="false" Title="State/Providence" />
+                                                </div>
+                                                <div class="large-6 columns">
+                                                    <uc:TextBox_Animated runat="server" ID="txbShippingPostalCode" CausesValidation="false" Title="Postal Code" />
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul id="profile" class="hide">
+                            <li>
+                                <div class="row">
+                                    <div class="columns">
+                                        <h3 class="text-right">USER PROFILE</h3>
+                                        <fieldset class="outlinePanel">
+                                            <legend>Account Profile Image</legend>
+                                            <uc:UserImageMngr runat="server" ID="ucUserImageMngr" />
+                                        </fieldset>
+                                        <br />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul id="pledges" class="hide">
+                            <li>
+                                <div class="row">
+                                    <div class="columns">
+                                        <h3 class="text-right">PLEDGES</h3>
+                                        <fieldset class="outlinePanel">
+                                            <legend>Pledge History</legend>
+                                            <div class="row">
+                                                <uc:PledgeListPnl_AcctEdit runat="server" ID="ucPledgeListPnl_AcctEdit" />
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <ul id="ratings" class="hide">
+                            <li>
+                                <div class="row">
+                                    <div class="columns">
+                                        <h3 class="text-right">RATED CAMPAIGNS</h3>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <br />
+                                    <div class="columns">
+                                        <fieldset class="outlinePanel">
+                                            <legend>Rating History</legend>
+                                            <div class="row">
+                                                <uc:MemberRatingCampaigns runat="server" ID="MemberRatingCampaigns" />
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+
+
+                                <br />
+
+                            </li>
+                        </ul>
+
+                        <ul id="creditcard" class="hide">
+                            <li>
+                                <div class="row">
+                                    <div class="columns">
+                                        <h3 class="text-right">CREDIT CARD</h3>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="columns">
+                                        <uc:ManageCreditcard runat="server" />
+                                    </div>
+                                </div>
+                                <br />
+
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <asp:LinkButton runat="server" ID="lbtnUpdateAcct" ValidationGroup="validate" CausesValidation="true" CssClass="lbtnUpdateAcct shikobaButton nextPg button--shikoba green small button--round-s button--border-thin">
+                                <i class="button__icon fi-next size-24"></i>
+                                <span>Update Account</span>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="hide hiddenFields">
+        <input type="hidden" runat="server" value="" id="hfldActiveTab" class="hfldActiveTab" />
+        <input type="hidden" runat="server" value="" id="hfldCurrentUserId" class="hfldCurrentUserId" />
+        <input type="hidden" runat="server" value="false" id="hfldAcceptPwChange" class="hfldAcceptPwChange" />
+        <asp:HiddenField runat="server" ID="hfldMediaFolder" ClientIDMode="Static" />
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

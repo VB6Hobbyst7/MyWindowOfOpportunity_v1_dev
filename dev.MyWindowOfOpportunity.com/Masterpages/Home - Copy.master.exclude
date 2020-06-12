@@ -1,0 +1,64 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Home - Copy.master.vb" Inherits="Masterpages_Home" EnableViewState="false" %>
+
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TrendingCampaigns.ascx" TagName="TrendingCampaigns" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/Categories.ascx" TagName="Categories" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/SearchPanel.ascx" TagName="SearchPanel" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/HowThisWorks.ascx" TagName="HowThisWorks" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/LetsGetStarted.ascx" TagName="LetsGetStarted" TagPrefix="uc" %>
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server"></asp:Content>
+
+<asp:Content ID="cContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <uc:Banner runat="server" ID="ucBanner" />
+    <br class="hide-for-medium-down" />
+
+
+    <div class="row shadow generalTextPnl">
+        <div class="small-24 medium-18 large-20 medium-push-3 large-push-2 columns text-center">
+            <br />
+            <h1>Crowdfunding re-engineered. &nbsp;<br class="show-for-medium-only" />Begin your Window of Opportunity today!</h1>
+            <div>*In celebration of launching our new website <em>MyWindowOfOpportunity.com</em> is waiving our fees for a limited time.  <a href="./help/#pricingfees">Learn more</a>.</div>
+            <%--<div>*In celebration of launching our new site we are waiving our fees for a limited time.  <a href="./help/#pricingfees">Learn more</a>.</div>--%>
+            <%--<div>*Start a campaign before <u>August 1</u><sup>st</sup> and we will waive our fees.  <a href="./help/#pricingfees">Learn more</a>.</div>--%>
+            <%--<div>Learn more about our <a href="./campaign/#createyourcampaign">Multi-Phase Campaigns</a> and how <a href="./help/#pricingfees">Your First Phase Is Free</a><sup>*</sup>.</div>--%>
+            <br />
+        </div>
+        <div class="hide-for-small-down medium-3 large-2 columns text-right">
+            <img src="/Images/Logo/smallLogo_transparent.png">
+        </div>
+    </div>
+    <br class="hide-for-medium-down" />
+
+
+    <div class="row shadow whiteBg">
+        <div class="small-24 columns">
+            <br />
+        </div>
+        <div class="small-24 large-6 large-push-18 columns">
+            <uc:Categories runat="server" ID="ucCategories" />
+        </div>
+        <div class="large-18 large-pull-6 columns">
+            <uc:TrendingCampaigns runat="server" ID="ucTrendingCampaigns" />
+        </div>
+
+    </div>
+    <br />
+    
+    
+    <uc:SearchPanel runat="server" ID="ucSearchPanel" panelSize="Macro" />
+    <br />
+    
+    
+    <uc:HowThisWorks runat="server" ID="ucHowThisWorks" />
+    <br />
+    
+    
+    <uc:LetsGetStarted runat="server" ID="ucLetsGetStarted" />
+    
+
+    <asp:ContentPlaceHolder ID="cphMainContent" runat="server" />
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

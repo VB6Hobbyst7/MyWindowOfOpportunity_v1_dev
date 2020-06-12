@@ -1,0 +1,164 @@
+﻿
+Imports System
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Web
+
+
+Public Class ImageResizer
+    Private _imgQuality As Integer
+    Private _maxHeight As Integer
+    Private _maxWidth As Integer
+    Private _outputFormat As ImageFormat
+    Public Property ImgQuality As Integer
+        Get
+            Return Me._imgQuality
+        End Get
+
+        Set(ByVal value As Integer)
+            If (value < 2) OrElse (value > 100) Then
+                Me._imgQuality = 80
+            Else
+                Me._imgQuality = value
+            End If
+        End Set
+    End Property
+    Public Property MaxHeight As Integer
+        Get
+            Return Me._maxHeight
+        End Get
+
+        Set(ByVal value As Integer)
+            Me._maxHeight = value
+        End Set
+    End Property
+    Public Property MaxWidth As Integer
+        Get
+            Return Me._maxWidth
+        End Get
+
+        Set(ByVal value As Integer)
+            Me._maxWidth = value
+        End Set
+    End Property
+    Public Property OutputFormat As ImageFormat
+        Get
+            Return Me._outputFormat
+        End Get
+        Set(ByVal value As ImageFormat)
+            Me._outputFormat = value
+        End Set
+    End Property
+
+
+
+
+    Public Sub New()
+        Me._maxWidth = 800
+        Me._maxHeight = 800
+        Me._imgQuality = 80
+        Me._outputFormat = ImageFormat.Jpeg
+    End Sub
+
+    Public Sub New(ByVal maxWidth As Integer, ByVal maxHeight As Integer, ByVal imgQuality As Integer)
+        Me._maxWidth = 800
+        Me._maxHeight = 800
+        Me._imgQuality = 80
+        Me._outputFormat = ImageFormat.Jpeg
+        Me._maxHeight = maxHeight
+        Me._maxWidth = maxWidth
+        Me._imgQuality = imgQuality
+    End Sub
+
+    Friend Function Resize(ByVal sourceImage As System.Drawing.Image) As System.Drawing.Image
+        Dim source As System.Drawing.Image = New Bitmap(sourceImage)
+        Dim width As Integer = sourceImage.Width
+        Dim height As Integer = sourceImage.Height
+        If width > Me.MaxWidth Then
+            height = (height * Me.MaxWidth) / width
+            width = Me.MaxWidth
+        End If
+
+        If height > Me.MaxHeight Then
+            width = (width * Me.MaxHeight) / height
+            height = Me.MaxHeight
+        End If
+
+        If (width <> sourceImage.Width) OrElse (height <> sourceImage.Height) Then
+            source = New Bitmap(source, width, height)
+        End If
+
+        Return source
+    End Function
+
+    Public Sub Resize(ByVal imagePath As String)
+        Me.Resize(imagePath, imagePath)
+    End Sub
+
+    Public Function Resize(ByVal postedFile As HttpPostedFile) As Byte()
+        If postedFile.ContentLength = 0 Then
+            Return New Byte(-1) {}
+        End If
+
+        Dim sourceImage As System.Drawing.Image = System.Drawing.Image.FromStream(postedFile.InputStream)
+        Dim image2 As System.Drawing.Image = Me.Resize(sourceImage)
+        sourceImage.Dispose()
+        Dim encoderParams As EncoderParameters = New EncoderParameters(1)
+        encoderParams.Param(0) = New EncoderParameter(Imaging.Encoder.Quality, CLng(Me.ImgQuality))
+        Dim encoder As ImageCodecInfo = ImageCodecInfo.GetImageEncoders(OutputFormat.GetHashCode)
+        'Dim encoder As ImageCodecInfo = ImageCodecInfo.GetImageEncoders()(CInt(Me.OutputFormat))
+        'Dim encoder3 As ImageCodecInfo() = ImageCodecInfo.GetImageEncoders.
+
+        Dim stream As MemoryStream = New MemoryStream()
+        image2.Save(stream, encoder, encoderParams)
+        Dim buffer As Byte() = stream.GetBuffer()
+        image2.Dispose()
+        stream.Close()
+        Return buffer
+    End Function
+
+    Public Sub Resize(ByVal originalImagePath As String, ByVal resizedImagePath As String)
+        Dim image As System.Drawing.Image
+        Try
+            image = System.Drawing.Image.FromFile(originalImagePath)
+        Catch
+            If Not File.Exists(originalImagePath) Then
+                Throw New Exception("File " & originalImagePath & " doesn't exist; resize failed.")
+            End If
+
+            Throw New Exception("File " & originalImagePath & " is not a valid image file or No read permission on the file; resize failed.")
+        End Try
+
+        Dim image2 As System.Drawing.Image = Me.Resize(image)
+        image.Dispose()
+        Dim encoderParams As EncoderParameters = New EncoderParameters(1)
+        encoderParams.Param(0) = New EncoderParameter(Imaging.Encoder.Quality, CLng(Me.ImgQuality))
+        Dim encoder As ImageCodecInfo = ImageCodecInfo.GetImageEncoders()(CInt(Me.OutputFormat))
+        Try
+            image2.Save(resizedImagePath, encoder, encoderParams)
+        Catch exception As Exception
+            Dim userName As String
+            Try
+                userName = Environment.UserName
+            Catch
+                userName = Nothing
+            End Try
+
+            If String.IsNullOrEmpty(userName) Then
+                userName = "'ASPNET' or 'Network Service'"
+            End If
+
+            userName = userName & " windows account"
+            Throw New Exception("Could not save resized image to " & resizedImagePath & "; resize failed." & vbCrLf + exception.Message & vbLf & "Try the following:" & vbCrLf & "1. Ensure that " & resizedImagePath & " is a valid file path." & vbCrLf & "2. Ensure that the file " & resizedImagePath & " is not already being used by another process." & vbCrLf & "3. Ensure that " & userName & " has write/modify permission on " & resizedImagePath & " file." & vbCrLf)
+        Finally
+            image2.Dispose()
+        End Try
+    End Sub
+
+    Public Sub Resize(ByVal postedFile As HttpPostedFile, ByVal resizedImagePath As String)
+        postedFile.SaveAs(resizedImagePath)
+        Me.Resize(resizedImagePath)
+    End Sub
+
+End Class

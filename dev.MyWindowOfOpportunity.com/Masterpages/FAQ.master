@@ -1,0 +1,56 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="FAQ.master.vb" Inherits="Masterpages_FAQ" EnableViewState="false" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server">
+    
+</asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <div class="FAQs">
+    <uc:Banner runat="server" ID="ucBanner" />
+    <br />
+    <div class="row">
+        <div class="small-24 columns">
+            <h1>
+                <asp:Literal runat="server" ID="ltrlTitle" />
+            </h1>
+            <umbraco:Item runat="server" Field="content" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-24 columns"> 
+
+            <asp:ListView runat="server" ID="lstFAQs">
+                <LayoutTemplate>
+
+                    <div id="st-accordion" class="st-accordion">
+                        <ul class="accordion campaignData" data-accordion>
+                            <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                        </ul>
+                    </div>
+
+                </LayoutTemplate>
+                <ItemTemplate>
+
+                    <li class="accordion-navigation">
+                        <a data-content=='#<%#Eval("id") %>'><h3>  <%#Eval("question")%>  </h3>      <span class="st-arrow">Open or Close</span></a>
+                        <div id='<%#Eval("id") %>' class="st-content content shadow text-justify">
+                            <br />
+                            <asp:Literal runat="server" Text='<%#Eval("answer")%>' />
+                            <br />
+                        </div>
+                    </li>
+
+                </ItemTemplate>
+                <EmptyDataTemplate>
+                    <div>Sorry, no data found</div>
+                </EmptyDataTemplate>
+            </asp:ListView>
+              
+        </div>
+    </div>
+        </div>
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

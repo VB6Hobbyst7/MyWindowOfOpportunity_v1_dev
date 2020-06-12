@@ -1,0 +1,25 @@
+﻿Hi, [NAME] 
+
+The following question has been submitted.
+=========================================
+
+Contact Us Info:
+
+Name 
+[USERNAME] 
+
+Email
+[USEREMAIL] 
+
+Phone No. 
+[USERPHONE] 
+
+Subject 
+[SUBJECT] 
+
+Message 
+[USERMESSAGE] 
+
+
+Copyright [YEAR] | Fifth Laboratories LLC
+A Fifth Labs Company

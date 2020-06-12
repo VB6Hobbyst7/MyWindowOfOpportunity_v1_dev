@@ -1,0 +1,18 @@
+﻿You Recieved a Pledge!
+
+This email is to inform you that you have received a pledge for the following: 
+
+Campaign: [CAMPAIGNNAME]
+________________________________________
+
+Member: [MEMBERNAME]
+Pledged Amount: [PLEDGED]
+
+Manage Your Campaign [1]
+
+
+My Window of Opportunity
+A Fifth Labs Company 
+Copyright [YEAR] Fifth Laboratories LLC	
+
+[1] [LINK]

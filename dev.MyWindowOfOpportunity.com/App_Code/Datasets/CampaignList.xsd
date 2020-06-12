@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CampaignList" targetNamespace="http://tempuri.org/CampaignList.xsd" xmlns:mstns="http://tempuri.org/CampaignList.xsd" xmlns="http://tempuri.org/CampaignList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CampaignList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="CampaignList" msprop:Generator_UserDSName="CampaignList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtCampaignList" msprop:Generator_TableClassName="dtCampaignListDataTable" msprop:Generator_TableVarName="tabledtCampaignList" msprop:Generator_RowChangedName="dtCampaignListRowChanged" msprop:Generator_TablePropName="dtCampaignList" msprop:Generator_RowDeletingName="dtCampaignListRowDeleting" msprop:Generator_RowChangingName="dtCampaignListRowChanging" msprop:Generator_RowEvHandlerName="dtCampaignListRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCampaignListRowDeleted" msprop:Generator_RowClassName="dtCampaignListRow" msprop:Generator_UserTableName="dtCampaignList" msprop:Generator_RowEvArgName="dtCampaignListRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nodeId" msprop:Generator_ColumnVarNameInTable="columnnodeId" msprop:Generator_ColumnPropNameInRow="nodeId" msprop:Generator_ColumnPropNameInTable="nodeIdColumn" msprop:Generator_UserColumnName="nodeId" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtCampaigns" msprop:Generator_TableClassName="dtCampaignsDataTable" msprop:Generator_TableVarName="tabledtCampaigns" msprop:Generator_TablePropName="dtCampaigns" msprop:Generator_RowDeletingName="dtCampaignsRowDeleting" msprop:Generator_RowChangingName="dtCampaignsRowChanging" msprop:Generator_RowEvHandlerName="dtCampaignsRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCampaignsRowDeleted" msprop:Generator_UserTableName="dtCampaigns" msprop:Generator_RowChangedName="dtCampaignsRowChanged" msprop:Generator_RowEvArgName="dtCampaignsRowChangeEvent" msprop:Generator_RowClassName="dtCampaignsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nodeId" msprop:Generator_ColumnVarNameInTable="columnnodeId" msprop:Generator_ColumnPropNameInRow="nodeId" msprop:Generator_ColumnPropNameInTable="nodeIdColumn" msprop:Generator_UserColumnName="nodeId" type="xs:int" minOccurs="0" />
+              <xs:element name="creationDate" msprop:Generator_ColumnVarNameInTable="columncreationDate" msprop:Generator_ColumnPropNameInRow="creationDate" msprop:Generator_ColumnPropNameInTable="creationDateColumn" msprop:Generator_UserColumnName="creationDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="artisticSubcategory" msprop:Generator_ColumnVarNameInTable="columnartisticSubcategory" msprop:Generator_ColumnPropNameInRow="artisticSubcategory" msprop:Generator_ColumnPropNameInTable="artisticSubcategoryColumn" msprop:Generator_UserColumnName="artisticSubcategory" type="xs:string" minOccurs="0" />
+              <xs:element name="businessSubcategories" msprop:Generator_ColumnVarNameInTable="columnbusinessSubcategories" msprop:Generator_ColumnPropNameInRow="businessSubcategories" msprop:Generator_ColumnPropNameInTable="businessSubcategoriesColumn" msprop:Generator_UserColumnName="businessSubcategories" type="xs:string" minOccurs="0" />
+              <xs:element name="charitySubcategory" msprop:Generator_ColumnVarNameInTable="columncharitySubcategory" msprop:Generator_ColumnPropNameInRow="charitySubcategory" msprop:Generator_ColumnPropNameInTable="charitySubcategoryColumn" msprop:Generator_UserColumnName="charitySubcategory" type="xs:string" minOccurs="0" />
+              <xs:element name="communitySubcategories" msprop:Generator_ColumnVarNameInTable="columncommunitySubcategories" msprop:Generator_ColumnPropNameInRow="communitySubcategories" msprop:Generator_ColumnPropNameInTable="communitySubcategoriesColumn" msprop:Generator_UserColumnName="communitySubcategories" type="xs:string" minOccurs="0" />
+              <xs:element name="scienceSubcategory" msprop:Generator_ColumnVarNameInTable="columnscienceSubcategory" msprop:Generator_ColumnPropNameInRow="scienceSubcategory" msprop:Generator_ColumnPropNameInTable="scienceSubcategoryColumn" msprop:Generator_UserColumnName="scienceSubcategory" type="xs:string" minOccurs="0" />
+              <xs:element name="selfHelpSubcategory" msprop:Generator_ColumnVarNameInTable="columnselfHelpSubcategory" msprop:Generator_ColumnPropNameInRow="selfHelpSubcategory" msprop:Generator_ColumnPropNameInTable="selfHelpSubcategoryColumn" msprop:Generator_UserColumnName="selfHelpSubcategory" type="xs:string" minOccurs="0" />
+              <xs:element name="softwareSubcategory" msprop:Generator_ColumnVarNameInTable="columnsoftwareSubcategory" msprop:Generator_ColumnPropNameInRow="softwareSubcategory" msprop:Generator_ColumnPropNameInTable="softwareSubcategoryColumn" msprop:Generator_UserColumnName="softwareSubcategory" type="xs:string" minOccurs="0" />
+              <xs:element name="technologySubcategory" msprop:Generator_ColumnVarNameInTable="columntechnologySubcategory" msprop:Generator_ColumnPropNameInRow="technologySubcategory" msprop:Generator_ColumnPropNameInTable="technologySubcategoryColumn" msprop:Generator_UserColumnName="technologySubcategory" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtCampaignCategories" msprop:Generator_TableClassName="dtCampaignCategoriesDataTable" msprop:Generator_TableVarName="tabledtCampaignCategories" msprop:Generator_TablePropName="dtCampaignCategories" msprop:Generator_RowDeletingName="dtCampaignCategoriesRowDeleting" msprop:Generator_RowChangingName="dtCampaignCategoriesRowChanging" msprop:Generator_RowEvHandlerName="dtCampaignCategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCampaignCategoriesRowDeleted" msprop:Generator_UserTableName="dtCampaignCategories" msprop:Generator_RowChangedName="dtCampaignCategoriesRowChanged" msprop:Generator_RowEvArgName="dtCampaignCategoriesRowChangeEvent" msprop:Generator_RowClassName="dtCampaignCategoriesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nodeId" msprop:Generator_ColumnVarNameInTable="columnnodeId" msprop:Generator_ColumnPropNameInRow="nodeId" msprop:Generator_ColumnPropNameInTable="nodeIdColumn" msprop:Generator_UserColumnName="nodeId" type="xs:int" minOccurs="0" />
+              <xs:element name="Artistic" msdata:Caption="artisticSubcategory" msprop:Generator_ColumnVarNameInTable="columnArtistic" msprop:Generator_ColumnPropNameInRow="Artistic" msprop:Generator_ColumnPropNameInTable="ArtisticColumn" msprop:Generator_UserColumnName="Artistic" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Business" msdata:Caption="businessSubcategories" msprop:Generator_ColumnVarNameInTable="columnBusiness" msprop:Generator_ColumnPropNameInRow="Business" msprop:Generator_ColumnPropNameInTable="BusinessColumn" msprop:Generator_UserColumnName="Business" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Charity" msdata:Caption="charitySubcategory" msprop:Generator_ColumnVarNameInTable="columnCharity" msprop:Generator_ColumnPropNameInRow="Charity" msprop:Generator_ColumnPropNameInTable="CharityColumn" msprop:Generator_UserColumnName="Charity" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Community" msdata:Caption="communitySubcategories" msprop:Generator_ColumnVarNameInTable="columnCommunity" msprop:Generator_ColumnPropNameInRow="Community" msprop:Generator_ColumnPropNameInTable="CommunityColumn" msprop:Generator_UserColumnName="Community" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Science" msdata:Caption="scienceSubcategory" msprop:Generator_ColumnVarNameInTable="columnScience" msprop:Generator_ColumnPropNameInRow="Science" msprop:Generator_ColumnPropNameInTable="ScienceColumn" msprop:Generator_UserColumnName="Science" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SelfHelp" msdata:Caption="selfHelpSubcategory" msprop:Generator_ColumnVarNameInTable="columnSelfHelp" msprop:Generator_ColumnPropNameInRow="SelfHelp" msprop:Generator_ColumnPropNameInTable="SelfHelpColumn" msprop:Generator_UserColumnName="SelfHelp" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Software" msdata:Caption="softwareSubcategory" msprop:Generator_ColumnVarNameInTable="columnSoftware" msprop:Generator_ColumnPropNameInRow="Software" msprop:Generator_ColumnPropNameInTable="SoftwareColumn" msprop:Generator_UserColumnName="Software" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Technology" msdata:Caption="technologySubcategory" msprop:Generator_ColumnVarNameInTable="columnTechnology" msprop:Generator_ColumnPropNameInRow="Technology" msprop:Generator_ColumnPropNameInTable="TechnologyColumn" msprop:Generator_UserColumnName="Technology" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

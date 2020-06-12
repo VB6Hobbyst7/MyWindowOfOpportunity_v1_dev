@@ -1,0 +1,247 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Campaign_Page.master.vb" Inherits="Masterpages_Campaign_Page" %>
+
+<%@ Register Src="/UserControls/AlertMsg.ascx" TagPrefix="uc" TagName="AlertMsg" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagPrefix="uc" TagName="Banner" %>
+<%@ Register Src="/UserControls/CampaignSummary.ascx" TagPrefix="uc" TagName="CampaignSummary" %>
+<%@ Register Src="/UserControls/Timeline.ascx" TagPrefix="uc" TagName="Timeline" %>
+<%@ Register Src="/UserControls/PledgeListPnl_Campaign.ascx" TagPrefix="uc" TagName="PledgeListPnl_Campaign" %>
+<%@ Register Src="/UserControls/RewardList.ascx" TagPrefix="uc" TagName="RewardList" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagPrefix="uc" TagName="TextBox_Animated" %>
+<%@ Register Src="/UserControls/Rating.ascx" TagPrefix="uc" TagName="Rating" %>
+<%@ Reference Control="~/UserControls/CampaignPhase.ascx" %>
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server">
+    <asp:Literal runat="server" ID="ltrlCustomCss" />
+</asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <div id="campaignPg">
+        <asp:Panel runat="server" ID="pnlPreviewMode" CssClass="ribbon-wrapper">
+            <div class="ribbon">Preview Mode</div>
+        </asp:Panel>
+        <uc:Banner runat="server" ID="ucBanner" />
+
+
+
+
+        <div id="campaignPage" class="pnlContent">
+            <div class="row pageTitles">
+                <div class="medium-16 columns">
+                    <h1 class="small-text-center medium-text-left campaignTitle">
+                        <asp:Literal runat="server" ID="ltrlCampaignTitle" /></h1>
+                    <h5 class="small-text-center medium-text-left">
+                        <asp:HyperLink runat="server" ID="hlnkTeamName" Text="Team Page" /></h5>
+
+                    <div class="socialIcons small-text-center medium-text-left">
+                        <asp:HyperLink runat="server" ID="hlnkFacebook" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                            <asp:Image runat="server" ID="imgFacebook" CssClass="FacebookIcon" />
+                        </asp:HyperLink>
+
+                        <asp:HyperLink runat="server" ID="hlnkTwitter" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                            <asp:Image runat="server" ID="imgTwitter" CssClass="TwitterIcon" />
+                        </asp:HyperLink>
+
+                        <asp:HyperLink runat="server" ID="hlnkLinkedIn" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                            <asp:Image runat="server" ID="imgLinkedIn" CssClass="LinkedInIcon" />
+                        </asp:HyperLink>
+
+                        <asp:HyperLink runat="server" ID="hlnkSupportEmail" CssClass="button callToAction socialIcon" Visible="false">
+                            <asp:Image runat="server" ID="imgSupportEmail" CssClass="EmailIcon" />
+                        </asp:HyperLink>
+                    </div>
+                    <br class="" />
+                </div>
+                <div class="medium-8 columns small-text-center medium-text-right">
+                    <br class="hide-for-small-down" />
+                    <asp:Panel runat="server" ID="pnlRelatedSite" CssClass="relatedSite">
+                        <h3>View our
+                            <br class="show-for-small-down" />
+                            <asp:HyperLink runat="server" ID="hlnkTeamPage" Text="Team Page" /><br class="show-for-medium-only" />
+                            <span class="show-for-medium-up">to learn about us.</span>
+                        </h3>
+                    </asp:Panel>
+                    <br class="show-for-small-down" />
+                </div>
+            </div>
+
+            <asp:Panel runat="server" ID="pnlCompletedCampaign" Visible="false" CssClass="row complete">
+                <div class="columns text-center">
+                    <hr />
+                    <h3>This campaign has completed successfully!</h3>
+                    <hr />
+                </div>
+            </asp:Panel>
+
+            <div class="row">
+                <div class="large-16 columns">
+                    <uc:AlertMsg runat="server" ID="ucAlertMsg" Visible="false" />
+                    <div class="row collapse">
+                        <div class="columns">
+                            <asp:Image runat="server" ID="imgBanner" CssClass="campaignFeaturedImg" AlternateText="Campaign's Featured Image" />
+                        </div>
+                    </div>
+                    <div class="row show-for-medium-down">
+                        <div class="columns">
+                            <asp:Literal runat="server" ID="ltrlBriefSummary_Mbl" />
+                        </div>
+                    </div>
+                    <div class="row show-for-medium-down">
+                        <br />
+                        <div class="small-24 medium-12 medium-push-6 columns">
+                            <asp:HyperLink runat="server" ID="hlnkFundThisCampaign_Mbl" CssClass="button large expand radius secondary" Text="FUND THIS PHASE" />
+                        </div>
+                    </div>
+                    <div class="row" id="Summaries">
+                        <asp:Panel runat="server" ID="pnlPhases" CssClass="small-24 large-16 columns">
+                            <br />
+                        </asp:Panel>
+
+                        <div class="small-24 large-8 columns">
+                            <br />
+                            <uc:CampaignSummary runat="server" ID="ucCampaignSummary" />
+                        </div>
+                    </div>
+
+                    <%--<asp:PlaceHolder runat="server" ID="phPartialWidthContent">--%>
+                        <div class="row collapse">
+                            <div class="columns">
+                                <br class="show-for-medium-down" />
+                                <div class="organicTabs">
+                                    <ul class="nav hide-for-small-down">
+                                        <li class="nav-one"><a href="#campaign" class="current">CAMPAIGN</a></li>
+                                        <li class="nav-two"><a href="#activities">ACTIVITIES</a></li>
+                                        <li class="nav-three"><a href="#pledges">Pledges</a></li>
+                                    </ul>
+                                    <ul class="nav mbl small-block-grid-1 show-for-small-down">
+                                        <li class="nav-one"><a href="#campaign" class="current">CAMPAIGN</a></li>
+                                        <li class="nav-two"><a href="#activities">ACTIVITIES</a></li>
+                                        <li class="nav-three"><a href="#pledges">Pledges</a></li>
+                                    </ul>
+
+                                    <div class="list-wrap">
+                                        <ul id="campaign">
+                                            <li>
+                                                <asp:Literal runat="server" ID="ltrlFullSummary" />
+                                            </li>
+                                        </ul>
+
+                                        <ul id="activities" class="hide">
+                                            <li>
+                                                <uc:Timeline runat="server" ID="ucTimeline" />
+                                            </li>
+                                        </ul>
+
+                                        <ul id="pledges" class="hide">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="columns">
+                                                        <uc:PledgeListPnl_Campaign runat="server" ID="ucPledgeListPnl" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%--</asp:PlaceHolder>--%>
+
+
+
+                </div>
+                <div class="large-8 columns">
+                    <br class="show-for-medium-down" />
+                    <div class="show-for-large-up">
+                        <pre class="prewrap"><asp:Literal runat="server" ID="ltrlBriefSummary" Mode="Encode" /></pre>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="small-24 medium-12 medium-push-6 large-24 large-push-0 columns">
+                            <asp:HyperLink runat="server" ID="hlnkFundThisCampaign" CssClass="button large expand radius secondary" Text="FUND THIS PHASE" Visible="false" />
+                        </div>
+                    </div>
+                    <asp:Panel runat="server" ID="pnlRating" Visible="false" CssClass="">
+                        <uc:Rating runat="server" ID="Rating" />
+                    </asp:Panel>
+
+                    <div class="row" id="divReward" runat="server" visible="true">
+                        <div class="columns end">
+                            <uc:RewardList runat="server" ID="ucRewardList" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <%--<asp:PlaceHolder runat="server" ID="phFullWidthContent" Visible="false">
+                <div class="row collapse">
+                        <div class="columns">
+                            <br class="show-for-medium-down" />
+                            <div class="organicTabs">
+                                <ul class="nav hide-for-small-down">
+                                    <li class="nav-one"><a href="#campaign" class="current">CAMPAIGN</a></li>
+                                    <li class="nav-two"><a href="#activities">ACTIVITIES</a></li>
+                                    <li class="nav-three"><a href="#pledges">Pledges</a></li>
+                                </ul>
+                                <ul class="nav mbl small-block-grid-1 show-for-small-down">
+                                    <li class="nav-one"><a href="#campaign" class="current">CAMPAIGN</a></li>
+                                    <li class="nav-two"><a href="#activities">ACTIVITIES</a></li>
+                                    <li class="nav-three"><a href="#pledges">Pledges</a></li>
+                                </ul>
+
+                                <div class="list-wrap">
+                                    <ul id="campaign">
+                                        <li>
+                                            <asp:Literal runat="server" ID="ltrlFullSummaryFW" />
+                                        </li>
+                                    </ul>
+
+                                    <ul id="activities" class="hide">
+                                        <li>
+                                            <uc:Timeline runat="server" ID="ucTimelineFW" />
+                                        </li>
+                                    </ul>
+
+                                    <ul id="pledges" class="hide">
+                                        <li>
+                                            <div class="row">
+                                                <div class="columns">
+                                                    <uc:PledgeListPnl_Campaign runat="server" ID="ucPledgeListPnlFW" />
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </asp:PlaceHolder>--%>
+
+
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="columns">
+                <asp:Button runat="server" ID="btnReportCampaign" CssClass="tiny button" Text="Report campaign" UseSubmitBehavior="false" />
+            </div>
+        </div>
+
+        <asp:HiddenField runat="server" ID="hfldPercentFunded" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldPreviewMode" ClientIDMode="Static" Value="False" />
+    </div>
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server">
+    <%-- Go to www.addthis.com/dashboard to customize your tools --%>
+    <asp:PlaceHolder runat="server" ID="phAddThis" Visible="false">
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5940a1c8f62f5db0"></script>
+    </asp:PlaceHolder>
+</asp:Content>

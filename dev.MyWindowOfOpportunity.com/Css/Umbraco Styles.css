@@ -1,0 +1,74 @@
+
+
+/**umb_name:h1*/
+h1{color:#0071bc;margin:12px 0;font-size:40px;font-style:normal;font-weight:400;line-height:38px;font-family:"Vegur";letter-spacing:.03em}
+
+/**umb_name:h2*/
+h2{font-size:26px;line-height:42px;font-family:'RobotoCondensed-Bold';color:#29abe2;letter-spacing:.03em;font-style:normal;font-weight:400;margin-bottom:.5rem;margin-top:.2rem;text-rendering:optimizeLegibility}
+
+/**umb_name:h3*/
+h3{font-size:24px;line-height:32px;font-family:'RobotoCondensed-Bold';color:#39b54a;letter-spacing:.03em;font-style:normal;font-weight:400;margin-bottom:.5rem;margin-top:.2rem;text-rendering:optimizeLegibility}
+
+/**umb_name:h4*/
+h4{font-size:30px;line-height:24px;font-family:'RobotoCondensed-Bold';color:rgba(255,255,255,.62);letter-spacing:.03em;font-style:normal;font-weight:400;margin-bottom:.5rem;margin-top:.2rem;text-rendering:optimizeLegibility}
+
+/**umb_name:h5*/
+h5{color:#29abe2;margin-top:-8px;margin-bottom:0;font-size:20px;line-height:28px;text-transform:uppercase;font-family:'RobotoCondensed-Bold';letter-spacing:.03em;font-style:normal;font-weight:400;text-rendering:optimizeLegibility}
+
+/**umb_name:h6*/
+h6{font-size:18px;line-height:24px;font-weight:700;color:#39b54a;font-family:'RobotoCondensed-Bold';letter-spacing:.03em;font-style:normal;margin-bottom:.5rem;margin-top:.2rem;text-rendering:optimizeLegibility}
+
+/**umb_name:blockquote*/
+blockquote{}
+
+
+
+body {font-family:'OpenSans', Arial; color:#666666; background-color:#E6E6E6;font-size:16px;}
+
+h1, h2, h3, h4, h5, h6, 
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, 
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, 
+.panel.callout.inactive h1, .panel.callout.inactive h2, .panel.callout.inactive h3, .panel.callout.inactive h4, .panel.callout.inactive h5, .panel.callout.inactive h6 
+{font-family:'Vegur';color: #29ABE2;letter-spacing: 0.03em;}
+
+h1, .panel h1, .panel.callout h1, .panel.callout.inactive h1 {font-size:40px;}
+h2, .panel h2, .panel.callout h2, .panel.callout.inactive h2 {font-size:26px;}
+h3, .panel h3, .panel.callout h3, .panel.callout.inactive h3 {font-size:24px;font-family:'Vegur-Bold';margin-bottom: 0;color:#39b54a;}
+h4, .panel h4, .panel.callout h4, .panel.callout.inactive h4 {font-size:30px;font-family:'Vegur-Bold';/*margin-bottom: 0;*/color: rgba(255, 255, 255, 0.62);line-height: 30px;}
+h5, .panel h5, .panel.callout h5, .panel.callout.inactive h5 {font-size:24px;margin-top: 0;}
+h6, .panel h6, .panel.callout h6, .panel.callout.inactive h6 {font-size: 18px;font-weight: bold;color: #39b54a;}
+
+p {}
+blockquote {border-width:0;padding-top: 0;padding-right: 0;}
+a, .top-bar-section ul li > a {font-family:'OpenSans';}     
+select:disabled {color: #ABABAB;border: 1px solid #ABABAB!important;}
+.bold {font-weight:bold;}
+
+.shadow {box-shadow: 0 2px 2px rgba(48, 48, 48, 0.3);}
+.panel .whiteTextShadow {color:#fff !important;text-shadow:1px 1px 1px #316dbc}
+/*.panel .whiteTextShadow {color:#fff !important;text-shadow:1px 1px 1px #316dbc}*/
+
+.categories [class*="block-grid-"] > li {padding-bottom: 0;margin-bottom: 9px;}
+.categories a {font-size: 21px;color: #666666;}
+.categories img {width: 28px;height: 28px;margin-right: 18px;}
+.categories li.viewMore {margin: 0;padding-top: 2px;}
+.categories li.viewMore a {font-weight:bold;padding-left: 48px;}
+.clearDdl {color:#29ABE2;border:1px solid #29ABE2 !important;font-weight:bold;margin-right: 6px;background-color: transparent;height: 42px;margin-bottom: 0;font-size: 16px;}
+
+button, .button {color:#FFFFFF;background-color: #0071bc;}
+button:hover, .button:hover {color:#FFFFFF;background-color: #8cc63f;}
+button.secondary, .button.secondary {color:#FFFFFF;background-color: #8cc63f;}
+button.secondary:hover, .button.secondary:hover {color:#FFFFFF;background-color: #0071bc;}
+.button.secondary.tiny {margin:0}
+
+.round {border-radius: 4px;}
+.round.topOnly {border-radius: 4px 4px 0 0;}
+.round.bottomOnly {border-radius: 0 0 4px 4px;}
+.round.leftOnly {border-radius: 4px 0 0 4px;}
+.round.rightOnly {border-radius: 0 4px 4px 0;}
+
+.fadeOut{position:relative;}
+.fadeOut:after {content: "";position: absolute;top: 27px;left: 0;height: 32px;width: 100%;background: linear-gradient(rgba(0,0,0,0), #FFF);}
+
+/**umb_name:a*/
+.a{display:initial;border-bottom:0;padding:4px;color:#2ba6cb;font-family:'OpenSans';line-height:inherit;text-decoration:none;background-color:transparent;cursor:pointer}

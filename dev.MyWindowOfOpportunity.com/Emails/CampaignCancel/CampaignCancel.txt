@@ -1,0 +1,8 @@
+﻿Hi, [NAME]
+
+We apologize for the inconvenience, but your pledge to support the following campaign, [CAMPAIGN-NAME], has been canceled.
+The campaign was temporarily deactivated. But once it has been reactivated you can again pledge your support.
+
+
+Copyright [YEAR] Fifth Laboratories LLC
+A Fifth Labs Company 	

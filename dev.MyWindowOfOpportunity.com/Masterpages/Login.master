@@ -1,0 +1,103 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Login.master.vb" Inherits="Masterpages_Standard_Page" %>
+
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagName="TextBox_Animated" TagPrefix="uc" %>
+<%@ Reference Control="/UserControls/AlertMsg.ascx" %>
+
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server"></asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <div id="loginPg">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+        <div class="row">
+            <div class="small-24 columns">
+                <h1>Login</h1>
+                <umbraco:Item runat="server" Field="content" />
+            </div>
+        </div>
+
+        <div class="row collapse">
+            <div class="large-20 large-push-2 columns">
+                <asp:PlaceHolder runat="server" ID="phAlerts" />
+                <br />
+            </div>
+        </div>
+
+        <div class="row">
+                <br class="show-for-small-down" />
+            <div class="medium-16 medium-push-4 large-8 large-push-2 columns panel radius">
+                <h3 class="text-center">By Social Media</h3>
+                <br />
+
+                <div class="row socialLinks">
+                    <div class="small-8 columns">
+                        <asp:LinkButton ID="lnkFblogin" runat="server"> 
+                        <img src="/Images/Icons/socialIcons/facebook_sm.png" />
+                        </asp:LinkButton>
+
+
+                        <%--<asp:HyperLink runat="server" id="hlnkFacebookLogin" NavigateUrl="/" ImageUrl="~/Images/Icons/socialIcons/facebook_sm.png" />--%>
+                    </div>
+                    <div class="small-8 columns">
+                        <asp:LinkButton ID="LinkButton1" runat="server"> 
+                        <img src="/Images/Icons/socialIcons/twitter_sm.png" />
+                        </asp:LinkButton>
+                        <%--  <asp:HyperLink runat="server" id="hlnkTwitterLogin" NavigateUrl="/" ImageUrl="~/Images/Icons/socialIcons/twitter_sm.png" />--%>
+                    </div>
+                    <div class="small-8 columns">
+                        <asp:LinkButton runat="server" ID="lnkLinkedInLogin">
+                        <img src="/Images/Icons/socialIcons/linkedIn_sm.png" />
+                        </asp:LinkButton>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br class="hide-for-small-down" />
+
+                <div class="row">
+                    <h3 class="text-center">With Your Credentials</h3>
+
+                    <div class="small-24 columns">
+                        <uc:TextBox_Animated runat="server" ID="ucTxbEmail" Title="Email" TextMode="_Email" isRequired="true" additionalClass="input--filled" />
+                    </div>
+                    <div class="small-24 columns">
+                        <uc:TextBox_Animated runat="server" ID="ucTxbPassword" Title="Password" TextMode="_Password" isRequired="true" additionalClass="input--filled" />
+                    </div>
+
+
+                    <div class="small-24 columns">
+                        <div class="left">
+
+                            <button id="btnLogin" name="btnLogin" type="submit" class="shikobaButton nextPg button--shikoba green button--round-s button--border-thin right submit">
+                                <i class="button__icon fi-next size-24"></i>
+                                <span>Login</span>
+                            </button>
+                            <asp:Button runat="server" ID="btnSubmit" ClientIDMode="Static" CssClass="hide" Text="submit" />
+
+                        </div>
+                        <div class="right">
+                            <asp:HyperLink ID="ForgotPassword" runat="server">Forgot Password?</asp:HyperLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hide-for-medium-down large-8 large-push-6 columns end panel radius">
+                <h3 class="text-center">Or Create An Account</h3>
+                <br />
+                <asp:HyperLink runat="server" ID="hlnkBecomeAMember" Text="Become A Member" CssClass="button callToAction radius" />
+            </div>
+        </div>
+        <div class="row show-for-medium-down">            
+            <div class="medium-16 medium-push-4 columns panel radius">
+                <h3 class="text-center">Or Create An Account</h3>
+                <br />
+                <asp:HyperLink runat="server" ID="hlnkBecomeAMember_Mbl" Text="Become A Member" CssClass="button callToAction radius" />
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

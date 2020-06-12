@@ -1,0 +1,21 @@
+﻿.organicTabs .pnlImageManagement a,.organicTabs .pnlImageManagement a:hover{background-color:transparent;border-bottom:0 none transparent;background:transparent;display:inline-block}
+.pnlImageManagement .pnlUpload .pnlUploadImage img{opacity:.3}
+.pnlImageManagement .pnlUpload:hover img{opacity:.7;cursor:pointer}
+.pnlImageManagement .pnlUpload a h5{display:inline-block}
+.pnlImageManagement .pnlUpload:hover h5{text-decoration:underline}
+.pnlImageManagement ul li{position:relative;-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;transform-style:preserve-3d}
+.pnlImageManagement ul li i{margin:0 10px 20px 10px;position:absolute;top:0;right:0;bottom:0;left:0;background-repeat:repeat;content:"";opacity:.2;z-index:-1;background-image:url("/Images/FileManagement/transparent.png")}
+.pnlImageManagement ul li img.imgFeatured{position:relative;top:50%;-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);-o-transform:translateY(-50%);-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+.pnlImageManagement ul li .btnSelectImg{background-color:#0071bc;color:#fff;position:absolute;bottom:20px;left:10px;right:10px;padding:4px 6px;font-size:13px;display:none;cursor:pointer}
+.pnlImageManagement ul li:hover .btnSelectImg{display:block}
+.pnlImageManagement ul li .trashcan{position:absolute;top:12px;right:20px;width:32px;height:auto;display:none;cursor:pointer}
+.pnlImageManagement ul li:hover .trashcan{display:block}
+.pnlImageManagement ul li .trashcan:hover{background:-webkit-radial-gradient(closest-side,rgba(255,255,255,1) 0,rgba(0,150,255,0) 100%);background:-moz-radial-gradient(closest-side,rgba(255,255,255,1) 0,rgba(0,150,255,0) 100%);background:radial-gradient(closest-side,rgba(255,255,255,1) 0,rgba(0,150,255,0) 100%);background-position:50% 50%}
+ul.lnkNavigation{display:inline-block}
+ul.lnkNavigation li{float:left}
+ul.lnkNavigation li a:hover{color:inherit;font-weight:bold;text-decoration:underline}
+.pnlImageManagement a.deleteImage{-moz-transition:color 300ms ease-in-out;-o-transition:color 300ms ease-in-out;-webkit-transition:color 300ms ease-in-out;transition:color 300ms ease-in-out}
+.pnlImageManagement a.deleteImage:hover{color:#f00}
+.pnlImageManagement a.deleteImage img{height:auto;width:16px;vertical-align:baseline}
+#progressbar{background- color:black;background- repeat:repeat - x;border-radius:13px;padding:3px}
+#progressbar>div{background-color:orange;width:0%;height:20px;border-radius:10px}

@@ -1,0 +1,419 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Checkout.master.vb" Inherits="Masterpages_Checkout" EnableViewState="true" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/PreCheckout.ascx" TagName="PreCheckout" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/CheckOut_RewardList.ascx" TagName="CMReward" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/AlertMsg.ascx" TagName="AlertMsg" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagName="TextBox_Animated" TagPrefix="uc" %>
+
+<asp:Content ContentPlaceHolderID="cphHeadContent" runat="server" />
+
+<asp:Content ContentPlaceHolderID="cphMainContent" runat="server">
+    <uc:Banner runat="server" ID="ucBanner" />
+    <div id="CheckoutPage">
+        <%--Page Title--%>
+        <div class="row pageTitles">
+            <div class="small-24 medium-8 medium-push-16 large-8 columns small-text-center medium-text-right">
+                <h2>Checkout</h2>
+                <hr class="show-for-small-down divider green" />
+            </div>
+            <div class="small-24 medium-16 medium-pull-8 large-16 columns">
+                <h1>
+                    <asp:Literal runat="server" ID="ltrlCampaignTitle" /></h1>
+                <h5>
+                    <asp:Literal runat="server" ID="ltrlTeamName" /></h5>
+            </div>
+        </div>
+
+
+        <%--Goals & Pledges--%>
+        <div class="row ">
+
+            <div class="clearfix"></div>
+
+            <div class="small-24 medium-16 large-16 columns text-center">
+                <div class="accordion">
+                    <div id="smartwizard">
+                        <ul>
+                            <li><a href="#step-1">Step 1<br />
+                                <small>Rewards and Pledges</small></a>
+                            </li>
+                            <li><a href="#step-2">Step 2<br />
+                                <small>Billing & Shipping</small></a></li>
+                            <li><a href="#step-3">Step 3<br />
+                                <small>Payment Method </small></a></li>
+                            <li><a href="#step-4">Step 4<br />
+                                <small>Complete</small></a></li>
+                        </ul>
+
+                        <div>
+                            <div id="step-1" class="">
+
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns alertMsgs">
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Warning" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Alert" />
+                                        <span class="errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row panel radius">
+                                    <h5>Select a pledge amount</h5>
+                                    <p>Your generous contribution will help ensure the success of this campaign.</p>
+
+                                    <div class="PledgeAmount">
+                                        <div class="row toggle" data-equalizer>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb1_Amount" type="radio" value="1" name="rbtnAmount" checked="checked" />
+                                                <label for="rb1_Amount" data-equalizer-watch>$1</label>
+                                            </div>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb2_Amount" type="radio" value="5" name="rbtnAmount" />
+                                                <label for="rb2_Amount" data-equalizer-watch>$5</label>
+                                            </div>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb3_Amount" type="radio" value="15" name="rbtnAmount" />
+                                                <label for="rb3_Amount" data-equalizer-watch>$15</label>
+                                            </div>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb4_Amount" type="radio" value="25" name="rbtnAmount" />
+                                                <label for="rb4_Amount" data-equalizer-watch>$25</label>
+                                            </div>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb5_Amount" type="radio" value="50" name="rbtnAmount" />
+                                                <label for="rb5_Amount" data-equalizer-watch>$50</label>
+                                            </div>
+                                            <div class="small-12 medium- large-3 columns">
+                                                <input id="rb6_Amount" type="radio" value="100" name="rbtnAmount" />
+                                                <label for="rb6_Amount" data-equalizer-watch>$100</label>
+                                            </div>
+                                            <div class="small-24 medium- large-6 columns">
+                                                <input id="rb7_Amount" type="radio" value="Custom" name="rbtnAmount" class="custom" />
+                                                <label for="rb7_Amount" data-equalizer-watch>
+                                                    <span>Custom</span>
+                                                    <asp:TextBox runat="server" ID="txbCustomAmount" ClientIDMode="Static" CssClass="" CausesValidation="True" TextMode="Number" />
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <%--Select Reward--%>
+                                <div class="row panel radius">
+                                    <h5>Select a reward</h5>
+                                    <div class="small-24 medium-24 large-24 columns">
+                                        <uc:CMReward runat="server" ID="OOReward" />
+                                    </div>
+                                </div>
+
+                                <br />
+                            </div>
+
+                            <div id="step-2" class="">
+
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns alertMsgs">
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Warning" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Alert" />
+                                        <span class="errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns">
+                                        <div class="row panel radius">
+                                            <h3>Billing & Shipping Addresses</h3>
+                                            <p>Please provide your address below.</p>
+                                        </div>
+                                        <br />
+
+                                        <div class="row panel radius">
+                                            <div class="small-24 medium-24 large-12 columns ">
+                                                <br class="show-for-medium-down" />
+                                                <h5>Billing Address</h5>
+
+                                                <div class="row">
+                                                    <div class="small-24 medium-24 large-24 columns ">
+                                                        <uc:TextBox_Animated ID="txtBillingAddress1" runat="server" Title="Address1" isRequired="true" additionalClass="txtBillingAddress1" />
+                                                    </div>
+                                                    <div class="small-24 medium-24 large-24 columns ">
+                                                        <uc:TextBox_Animated ID="txtBillingAddress2" runat="server" Title="Address2" additionalClass="txtBillingAddress2" />
+                                                    </div>
+
+                                                    <div class="small-24 medium-24 large-10 columns ">
+                                                        <uc:TextBox_Animated ID="txtBillingCity" runat="server" Title="City" isRequired="true" additionalClass="txtBillingCity" />
+                                                    </div>
+                                                    <div class="small-12 medium-12 large-6 columns ">
+                                                        <uc:TextBox_Animated ID="txtBillingState" runat="server" MaxLength="2" isRequired="true" Title="State" additionalClass="txtBillingState" />
+                                                    </div>
+                                                    <div class="small-12 medium-12 large-8 columns ">
+                                                        <uc:TextBox_Animated ID="txtBillingZip" runat="server" TextMode="_Number" isRequired="true" Title="Zip" additionalClass="txtBillingZip" />
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="small-24 medium-24 large-12 columns ">
+                                                <br class="show-for-medium-down" />
+                                                <h5>Shipping Address</h5>
+
+                                                <div class="row">
+                                                    <div class="small-24 medium-24 large-24 columns">
+                                                        <uc:TextBox_Animated ID="txtShippingAddress1" runat="server" Title="Address1" isRequired="true" additionalClass="txtShippingAddress1" />
+                                                    </div>
+                                                    <div class="small-24 medium-24 large-24 columns">
+                                                        <uc:TextBox_Animated ID="txtShippingAddress2" runat="server" Title="Address2" additionalClass="txtShippingAddress2" />
+                                                    </div>
+                                                    <div class="small-24 medium-24 large-10 columns">
+                                                        <uc:TextBox_Animated ID="txtShippingCity" runat="server" Title="City" isRequired="true" additionalClass="txtShippingCity" />
+                                                    </div>
+                                                    <div class="small-12 medium-12 large-6 columns ">
+                                                        <uc:TextBox_Animated ID="txtShippingState" MaxLength="2" runat="server" Title="State" isRequired="true" additionalClass="txtShippingState" />
+                                                    </div>
+                                                    <div class="small-12 medium-12 large-8 columns ">
+                                                        <uc:TextBox_Animated ID="txtShippingZip" runat="server" TextMode="_Number" isRequired="true" Title="Zip" additionalClass="txtShippingZip" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        
+                                        <asp:Panel runat="server" ID="pnlAltEmail" Visible="false" CssClass="row panel radius">
+                                            <h5>Alternative Email</h5>
+                                            <p>Users who log in using a social media must enter an alternative email address.</p>
+                                            <div class="small-24 medium-12 columns ">
+                                                <uc:TextBox_Animated ID="txbAltEmail" TextMode="_Email" runat="server" Title="Alternative Email" isRequired="true" additionalClass="txbAltEmail" />
+                                            </div>
+                                            <input runat="server" type="hidden" id="hfldUseAltEmail" class="hfldUseAltEmail" value="true" />
+                                        </asp:Panel>
+                                    </div>
+                                </div>                                
+
+                                <br />
+                            </div>
+
+                            <div id="step-3" class="">
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns alertMsgs">
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Warning" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Alert" />
+                                        <span class="errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-24 columns">
+                                        <%--Payment Instructions--%>
+                                        <div class="row panel radius">
+                                            <div class="small- medium- large-24 columns">
+                                                <h5>Payment information</h5>
+                                                <div>Provide your credit card information below and select if you wish to be anonymous.</div>
+                                                <div class="smaller">If this phase of the campaign fails you will be refunded your donation.</div>
+                                            </div>
+                                        </div>
+                                        <br />
+
+
+                                        <div id="credit" class="row panel radius FinancialManagement">
+                                            <h5>Enter Credit / Debit Card</h5>
+                                            <div class="small- medium- large-24 columns">
+                                                <div class="organicTabs">
+                                                    <div class="list-wrap">
+                                                        <ul id="creditCards">
+                                                            <li>
+                                                                <div class="row">
+                                                                    <h6>Card Information</h6>
+                                                                    <div class="small-24 medium-24 large-11 columns">
+                                                                        <input type="checkbox" id="cbShowAsAnonymous" name="cbShowAsAnonymous">
+                                                                        Show As Anonymous
+                                                                        <br />
+                                                                        <input type="checkbox" id="cbAcceptTerms" checked name="cbAcceptTerms" required>
+                                                                        I accept the Terms and Conditions&nbsp;&nbsp;
+                                                                        <div>
+                                                                            <asp:HyperLink runat="server" ID="hlnkReadServiceAgr" Text="Read service agreement" CssClass="regularLink" Target="_blank" />
+                                                                        </div>
+                                                                        <br />
+                                                                        <br class="show-for-medium-down" />
+                                                                        <img src="/Images/Icons/stripeCheckout.png" />
+                                                                    </div>
+                                                                    <div class="small-24 medium-24 large-12 columns">
+                                                                        <div class="row ">
+                                                                            <br class="show-for-medium-down" />
+                                                                            <div class="small- medium- large-12 columns text-center">
+                                                                                <span class="input input--manami txbNameOnCard">
+                                                                                    <input type="text" id="txbNameOnCard" class="input__field input__field--manami" title="Name on Card">
+                                                                                    <label class="input__label input__label--manami">
+                                                                                        <span class="input__label-content input__label-content--manami">Name on Card		                                   
+                                                                                      <span class="errorMsg">*</span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="small- medium- large-12 columns text-center">
+                                                                                <span class="input input--manami txbPostalCode">
+                                                                                    <input type="text" id="txbPostalCode" class="input__field input__field--manami" title="Postal Code" required onkeypress="return isNumberKey(event)">
+                                                                                    <label class="input__label input__label--manami">
+                                                                                        <span class="input__label-content input__label-content--manami">Postal Code			                                   
+                                                                                    <span class="errorMsg">*</span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="columns">
+                                                                                <span class="input input--manami txbCreditCard" style="position: relative">
+                                                                                    <image id="card_imag" class="icon-show-hide" src="/Images/Cards/icon-card.svg" alt="" />
+                                                                                    <input type="text" id="txbCreditCard" class="input__field input__field--manami input-1" title="Credit Card" placeholder="4242 4242 4242 4242" size="16" required onkeypress="return isNumberKey(event)">
+                                                                                    <input type="text" id="txbCCExpirationMonth" class="input__field input__field--manami hide-text-box input-2" placeholder="MM" title="Expiration Month" size="2" pattern="[0-9]{2}" required maxlength="2" onkeypress="return isNumberKey(event)">
+                                                                                    <div class="slash-show-hide">/</div>
+                                                                                    <input type="text" id="txbCCExpirationYear" class="input__field input__field--manami hide-text-box  input-3" title="Expiration Year" placeholder="YY" size="2" pattern="[0-9]{2}" required maxlength="2" onkeypress="return isNumberKey(event)">
+                                                                                    <input type="text" id="txbCvcCode" class="input__field input__field--manami hide-text-box  input-4" title="CVC Code" placeholder="CVC" size="4" pattern="[0-9]{3,4}" required maxlength="4" onkeypress="return isNumberKey(event)">
+                                                                                    <label class="input__label input__label--manami">
+                                                                                        <span class="input__label-content input__label-content--manami">Card	                                   
+                                                                                                   <span class="errorMsg">*</span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br class="hide-for-medium-down" />
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <br />
+                            </div>
+
+                            <div id="step-4" class="">
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns alertMsgs">
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Success" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Info" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Warning" />
+                                        <uc:AlertMsg runat="server" isHidden="true" MessageType="Alert" />
+                                        <span class="errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="small-24 medium-24 large-24 columns">
+                                        <div class="row panel radius">
+                                            <h3 class="ChargeMade hide alertMsg">Thank you for supporting our campaign.</h3>
+                                            <h3 class="ChargeFail hide danger">We apologize, but there was an error submitting your pledge.</h3>
+                                            <span class="ChargeWait hide span">Please wait, we are processing your pledge.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <%-- <pre id="json"></pre>--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="small-24 medium-8 large-8 columns">
+                <div class="row statusPnl">
+                    <div class="small- medium- large-24 columns text-left">
+
+                        <fieldset class="outlinePanel revaddress hide" data-equalizer-watch>
+                            <legend class="small-text-center large-text-left">Billing & Shipping</legend>
+                            <strong>Billing Address</strong>
+                            <br />
+                            <span id="BillingAddress" class="italic"></span>
+                            <br />
+                            <br />
+                            <strong>Shipping Address</strong><br />
+                            <span id="ShippingAddress" class="italic"></span>
+                        </fieldset>
+                        <div class="revaddress hide">
+                            <br />
+                        </div>
+
+
+                        <fieldset class="secondary outlinePanel revPanel hide" data-equalizer-watch>
+                            <legend class="small-text-center large-text-left">Pledge & Reward</legend>
+                            <strong>Pledged: </strong><span id="RevPledgeAmount" class="italic"></span>.<sup>00</sup>
+                            <br />
+                            <br />
+                            <strong>Reward: </strong><span id="RevRewardAmount" class="italic"></span>
+                        </fieldset>
+                        <div class="revPanel hide">
+                            <br />
+                        </div>
+
+
+                        <fieldset class="summaryPanel" data-equalizer-watch>
+                            <legend class="small-text-center large-text-left">Campaign Overview</legend>
+
+                            <strong>Campaign Goal:</strong>
+                            <asp:Literal runat="server" ID="ltrlGoalDollarAmt" />.<sup><asp:Literal runat="server" ID="ltrlGoalCents" /></sup>
+                            <br />
+                            <br />
+
+                            <strong>Phase Goal:</strong>
+                            <asp:Literal runat="server" ID="ltrlPhaseGoal" />.<sup><asp:Literal runat="server" ID="ltrlPhaseCents" /></sup>
+                            <br />
+                            <br />
+
+                            <strong>Active Phase:</strong>
+                            <asp:Literal runat="server" ID="ltrlActivePhase" />
+                            <br />
+                            <br />
+
+                            <strong>Total Pledged:</strong>
+                            <asp:Literal runat="server" ID="ltrlPledgedDollarAmt" />.<sup><asp:Literal runat="server" ID="ltrlPledgedCents" /></sup>
+
+                            <asp:HiddenField ID="ltrPhaseNode" ClientIDMode="Static" runat="server" />
+                            <asp:HiddenField ID="ltrGoalBool" ClientIDMode="Static" runat="server" />
+
+                        </fieldset>
+                        <br />
+
+
+                        <button type="button" id="lbtnPushBack" runat="server" class="shikobaButton button--shikoba button--round-s button--border-thin pull-right">
+                            <i class="button__icon fi-previous size-16"></i>
+                            <span>Back to Campaign</span>
+                        </button>
+                        <br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hide hiddenFields">
+            <asp:HiddenField runat="server" ID="hfldCurrentUserId" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldPublicKey" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldStripeUserId" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldCustomerId" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldCardId" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldCardToken" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldName" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldBrand" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldPostalCode" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldLast4" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldExpirationMonth" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldExpirationYear" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldShowAlertMsg_Success" ClientIDMode="Static" Value="False" />
+            <asp:HiddenField runat="server" ID="hfldShowAlertMsg_Info" ClientIDMode="Static" Value="False" />
+            <asp:HiddenField runat="server" ID="hfldShowAlertMsg_Error" ClientIDMode="Static" Value="False" />
+            <asp:HiddenField runat="server" ID="hfldAlertMsg_Error" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldPledgeamt" ClientIDMode="Static" />
+            <asp:HiddenField runat="server" ID="hfldCampaignId" ClientIDMode="Static" />
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

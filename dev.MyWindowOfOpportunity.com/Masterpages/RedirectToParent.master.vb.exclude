@@ -1,0 +1,13 @@
+﻿
+Imports Umbraco.Core.Models
+Imports Umbraco.Web
+
+Partial Class Masterpages_RedirectToParent
+    Inherits System.Web.UI.MasterPage
+
+    Private Sub Masterpages_RedirectToParent_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim ipCurrentNode As IPublishedContent = UmbracoContext.Current.PublishedContentRequest.PublishedContent
+        Response.Redirect(ipCurrentNode.Parent.Url, False)
+    End Sub
+End Class
+

@@ -1,0 +1,445 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" EnableViewState="true" Inherits="Masterpages_EditCampaign" CodeFile="EditCampaign.master.vb" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Content.ascx" TagName="editTab_Content" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Rewards.ascx" TagName="editTab_Rewards" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Images.ascx" TagName="editTab_Images" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Categories.ascx" TagName="editTab_Categories" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Phases.ascx" TagName="editTab_Phases" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Timeline.ascx" TagName="editTab_Timeline" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_TeamMembers.ascx" TagName="editTab_TeamMembers" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Pledges.ascx" TagName="editTab_Pledges" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/AlertMsg.ascx" TagName="AlertMsg" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/progressBar.ascx" TagName="progressBar" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/RatingSummary.ascx" TagName="RatingSummary" TagPrefix="uc" %>
+<%@ Reference Control="~/UserControls/progressBar.ascx" %>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" runat="Server"></asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="Server">
+    <div id="editCampaign">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+
+      <%--<hr />
+        <asp:GridView runat="server" ID="gv1" />
+        <hr />
+        <asp:GridView runat="server" ID="gv2" />
+        <hr />
+        <asp:GridView runat="server" ID="gv3" />
+        <hr />
+        <asp:GridView runat="server" ID="gv4" />
+        <hr />
+        <asp:GridView runat="server" ID="gv5" />
+        <hr />--%>
+        
+        <asp:MultiView runat="server" ID="mvEditViews" ActiveViewIndex="0">
+            <asp:View runat="server" ID="vEditMode">
+
+                <div class="row pageTitles">
+                    <div class="small-24 medium-8 medium-push-16 large-8 columns small-text-center medium-text-right">
+                        <h2>Edit Campaign</h2>
+                        <hr class="show-for-small-down divider green" />
+                    </div>
+                    <div class="small-24 medium-16 medium-pull-8 large-16 columns">
+                        <h1>
+                            <asp:Literal runat="server" ID="ltrlCampaignName" /></h1>
+                        <h5>
+                            <asp:HyperLink runat="server" ID="hlnkTeamName" /></h5>
+                    </div>
+                </div>
+
+                <div class="row collapse buttonList">
+                    <div class="columns">
+                        <div class="small-24 medium-8 large-5 columns smallBoxPadding-right right">
+                            <asp:PlaceHolder runat="server" ID="phPreview">
+
+                                <asp:HyperLink runat="server" ID="lbtnPreview" CssClass="green small right   shikobaButton nextPg button--shikoba button--round-s button--border-thin lbtn-preview-width-210" Target="_blank">
+                                    <i class="button__icon fi-zoom-in size-16"></i>
+                                    <span>Preview</span>
+                                </asp:HyperLink>
+
+                            </asp:PlaceHolder>
+                        </div>
+
+
+                        <div class="small-24 medium-9 large-5 columns smallBoxPadding-right right">
+                            <asp:PlaceHolder runat="server" ID="phViewCampaign">
+                                <a id="lnkViewCampaign" runat="server" class="blue small greenHoverBg right shikobaButton nextPg button--shikoba button--round-s button--border-thin">
+                                    <i class="button__icon fi-zoom-in size-16"></i>
+                                    <span>View Campaign</span>
+                                </a>
+                            </asp:PlaceHolder>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <br />
+                    </div>
+                </div>
+
+                <div class="row statusPnl" data-equalizer data-equalizer-mq="large-up">
+                    <div class="small-24 medium-24 large-16 columns">
+                        <fieldset class="secondary outlinePanel phaseStatus" data-equalizer-watch>
+                            <legend>Phase Status</legend>
+                            <div class="row">
+                                <div class="small-24 medium-15 large-10 columns">
+                                    <h2><strong>Status: </strong>
+                                        <asp:Label runat="server" ID="lblPhaseStatus" CssClass="italic" />
+                                    </h2>
+                                </div>
+
+                                <asp:PlaceHolder runat="server" ID="phLaunchDiscoveryPhase">
+                                    <div class="small-18 small-push-3 medium-9 medium-push-0 large-7 columns end">
+                                        <button type="button" class="blue small right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="var btn = $('.btnLaunchDiscoveryPhase');btn.trigger('click');">
+                                            <i class="button__icon fi-magnifying-glass size-16"></i>
+                                            <span>Launch Discovery</span>
+                                        </button>
+                                        <asp:Button ID="btnLaunchDiscoveryPhase" CssClass="hide btnLaunchDiscoveryPhase" runat="server" />
+                                    </div>
+                                </asp:PlaceHolder>
+
+                                <asp:PlaceHolder runat="server" ID="phCreateStripeAcct">
+                                    <div class="small-18 small-push-3 medium-9 medium-push-0 large-8 large-push-6 columns">
+                                        <asp:HyperLink runat="server" ID="hlnkCreateStripeAcct" Target="_blank" CssClass="blue small right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px">
+                                            <i class="button__icon fi-dollar size-24"></i>
+                                            <span>Connect Bank Account</span>
+                                        </asp:HyperLink>
+                                    </div>
+                                </asp:PlaceHolder>
+
+                                <div class="small-20 medium-9 large-7 columns">
+                                    <asp:PlaceHolder runat="server" ID="phPublishCampaign">
+                                        <button type="button" id="lbtnPublish" runat="server" class="green small right   shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="btnPublish();">
+                                            <i class="button__icon fi-upload size-16"></i>
+                                            <span>Publish Campaign</span>
+                                        </button>
+                                        <asp:Button ID="btnPublishHidden" CssClass="hide btnPublishHidden" runat="server" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="phLaunchPhase1">
+                                        <button type="button" class="green small right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="var btn = $('.btnLaunchPhase1');btn.trigger('click');">
+                                            <i class="button__icon fi-play size-16"></i>
+                                            <span>Launch Phase 1</span>
+                                        </button>
+                                        <asp:Button ID="btnLaunchPhase1" CssClass="hide btnLaunchPhase1" runat="server" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="phLaunchPhase2">
+                                        <button type="button" class="green small right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="var btn = $('.btnLaunchPhase2');btn.trigger('click');">
+                                            <i class="button__icon fi-play size-16"></i>
+                                            <span>Launch Phase 2</span>
+                                        </button>
+                                        <asp:Button ID="btnLaunchPhase2" CssClass="hide btnLaunchPhase2" runat="server" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="phLaunchPhase3">
+                                        <button type="button" class="green small  right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="var btn = $('.btnLaunchPhase3');btn.trigger('click');">
+                                            <i class="button__icon fi-play size-16"></i>
+                                            <span>Launch Phase 3</span>
+                                        </button>
+                                        <asp:Button ID="btnLaunchPhase3" CssClass="hide btnLaunchPhase3" runat="server" />
+                                    </asp:PlaceHolder>
+                                </div>
+                            </div>
+                            
+                            <%--<asp:PlaceHolder runat="server" ID="phUnpublish">
+                                <button type="button" id="lbtnUnPublish" runat="server" class="green small right shikobaButton nextPg button--shikoba button--round-s button--border-thin PaddingBottom-12px" onclick="btnUnPublish();">
+                                    <i class="button__icon fi-download size-16"></i>
+                                    <span>Unpublish</span>
+                                </button>
+                                <asp:Button ID="btnUnPublishHidden" CssClass="hide btnUnPublishHidden" runat="server" />
+                            </asp:PlaceHolder>--%>
+
+
+                            <asp:PlaceHolder runat="server" ID="phPreviousPhase" Visible="false">
+                                <hr />
+                                <h6><strong>Previous: </strong>
+                                    <asp:Label runat="server" ID="lblPreviousPhase" CssClass="italic" />
+                                </h6>
+                                <br />
+                            </asp:PlaceHolder>
+
+                            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+                                <asp:PlaceHolder runat="server" ID="phPhaseStatus" />
+                            </ul>
+
+                            <br />
+                            <asp:Label runat="server" ID="lblPhaseStatusNotes" CssClass="phaseStatusNotes smaller" />
+
+                        </fieldset>
+                        <br class="show-for-medium-down" />
+                    </div>
+                    <div class="small-24 medium-24 large-8 columns">
+                        <asp:PlaceHolder runat="server" ID="phCurrentPledges">
+                            <fieldset class="outlinePanel" data-equalizer-watch>
+                                <legend>Campaign Status</legend>
+                                <div class="row goalPledged">
+                                    <div class="small-12 medium-12 large-12 columns text-center">
+                                        <h6>Campaign <br class="show-for-small-down" />Goal</h6>
+                                        <h5>
+                                            <asp:Literal runat="server" ID="ltrlCampaignGoal_Dollars" />.<sup><asp:Literal runat="server" ID="ltrlCampaignGoal_Cents" /></sup></h5>
+                                    </div>
+                                    <div class="small-12 medium-12 large-12 columns text-center">
+                                        <h6>Total <br class="show-for-small-down" />Pledged</h6>
+                                        <h5>
+                                            <asp:Literal runat="server" ID="ltrlCurrentlyPledged_Dollars" />.<sup><asp:Literal runat="server" ID="ltrlCurrentlyPledged_Cents" /></sup></h5>
+                                    </div>
+                                </div>
+                                <div class="noTopMargin summaryProgressbar">
+                                    <uc:progressBar runat="server" ID="ucProgressBar_TotalPledges" fullSize="True" />
+                                </div>
+                                <asp:Panel runat="server" ID="pnlPublishedDate" CssClass="text-center">
+                                    <br />
+                                    <strong>Published: </strong>&nbsp;&nbsp;&nbsp;<asp:Label runat="server" ID="lblPublishDate" CssClass="italic" />
+                                </asp:Panel>
+                            </fieldset>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="phDiscoveryPhase" Visible="False">
+                            <fieldset class="summaryPanel" data-equalizer-watch>
+                                <legend>Reviews</legend>
+                                <uc:RatingSummary runat="server" ID="ucRatingSummary" transparentBg="true" />
+                            </fieldset>
+                        </asp:PlaceHolder>
+                    </div>
+                </div>
+
+                <asp:Panel runat="server" ID="pnlAlertPublishMsg" CssClass="row" Visible="false">
+                    <br />
+                    <br />
+                    <div class="columns">
+                        <uc:AlertMsg runat="server" ID="MainucAlertMsg_Error" MessageType="Alert" AlertMsg="We are unable to publish your campaign due to the following issues :" />
+                    </div>
+                </asp:Panel>
+
+                <div class="row">
+                    <div class="columns">
+                        <br />
+                        <br class="show-for-medium-down" />
+                        <div class="organicTabs">
+                            <ul class="nav hide-for-medium-down">
+                                <li><a href="#images" class="current">IMAGES</a></li>
+                                <li><a href="#content">CONTENT</a></li>
+                                <li><a href="#categories">CATEGORIES</a></li>
+                                <li><a href="#phases">PHASES</a></li>
+                                <li><a href="#timeline">TIMELINE</a></li>
+                                <li><a href="#rewards">REWARDS</a></li>
+                                <li><a href="#teamMembers">TEAM MEMBERS</a></li>
+                                <li class="last"><a href="#pledges">PLEDGES</a></li>
+                            </ul>
+                            <ul class="nav mbl small-block-grid-1 medium-block-grid-4 show-for-medium-down">
+                                <li><a href="#images" class="current">IMAGES</a></li>
+                                <li><a href="#content">CONTENT</a></li>
+                                <li><a href="#categories">CATEGORIES</a></li>
+                                <li><a href="#phases" class="">PHASES</a></li>
+                                <li><a href="#timeline">TIMELINE</a></li>
+                                <li><a href="#rewards">REWARDS</a></li>
+                                <li><a href="#teamMembers">TEAM MEMBERS</a></li>
+                                <li class="last"><a href="#pledges">PLEDGES</a></li>
+                            </ul>
+                            
+                            <br class="show-for-medium-down" />
+                            <br class="show-for-medium-down" />
+
+                            <div class="list-wrap">
+                                <ul id="images">
+                                    <li>
+                                        <uc:editTab_Images runat="server" ID="uceditTab_Images" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="content" class="hide">
+                                    <li>
+                                        <uc:editTab_Content runat="server" ID="uceditTab_Content" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="categories" class="hide">
+                                    <li>
+                                        <uc:editTab_Categories runat="server" ID="uceditTab_Categories" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="phases" class="hide">
+                                    <li>
+                                        <uc:editTab_Phases runat="server" ID="uceditTab_Phases" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="timeline" class="timeline hide">
+                                    <li>
+                                        <uc:editTab_Timeline runat="server" ID="uceditTab_Timeline" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="rewards" class="rewards hide">
+                                    <li>
+                                        <uc:editTab_Rewards runat="server" ID="uceditTab_Rewards" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="teamMembers" class="teamMembers hide">
+                                    <li>
+                                        <uc:editTab_TeamMembers runat="server" ID="uceditTab_TeamMembers" />
+                                        <br />
+                                    </li>
+                                </ul>
+
+                                <ul id="pledges" class="pledges hide">
+                                    <li>
+                                        <uc:editTab_Pledges runat="server" ID="editTab_Pledges" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </asp:View>
+
+            <asp:View runat="server" ID="vWizardMode">
+                <div class="wizardMode">
+
+                    <div class="row pageTitles">
+                        <div class="small-24 medium-8 medium-push-16 large-8 columns small-text-center medium-text-right">
+                            <h2>Edit Campaign</h2>
+                            <h6>Step-by-Step Wizard</h6>
+                            <hr class="show-for-small-down divider green" />
+                        </div>
+                        <div class="small-24 medium-16 medium-pull-8 large-16 columns">
+                            <h1>
+                                <asp:Literal runat="server" ID="ltrlCampaignName_Wiz" /></h1>
+                            <h5>
+                                <asp:HyperLink runat="server" ID="hlnkTeamName_Wiz" /></h5>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row collapse">
+                        <div class="columns">
+                            <fieldset class="secondary outlinePanel">
+                                <legend class="empty">
+                                    <asp:PlaceHolder runat="server" ID="phSteps" Visible="false">&nbsp;&nbsp;Step&nbsp;&nbsp;<asp:Literal runat="server" ID="ltrlStep" />&nbsp;&nbsp;
+                                        of&nbsp;&nbsp;<asp:Literal runat="server" ID="ltrlSteps" />&nbsp;&nbsp;
+                                    </asp:PlaceHolder>
+                                </legend>
+
+
+
+                                <div class="row">
+
+                                    <asp:Panel runat="server" ID="pnlExitWizard" CssClass="small-24 medium-6 large-3 columns">
+                                        <br class="show-for-small-down" />
+                                        <asp:HyperLink runat="server" ID="hlnkExitWizard" CssClass="alert tiny shikobaButton nextPg button--shikoba button--round-s button--border-thin lbtn-preview-width-210">
+                                            <i class="button__icon fi-zoom-in size-16"></i>
+                                            <span>Exit Wizard</span>
+                                        </asp:HyperLink>
+                                    </asp:Panel>
+
+
+                                    <asp:Panel runat="server" ID="pnlPrevious" CssClass="small-12 medium-6 medium-push-6 large-3 large-push-15 columns text-right">
+                                        <br class="show-for-small-down" />
+                                        <asp:LinkButton runat="server" ID="lbtnPrevious" CssClass="shikobaButton nextPg blue button--shikoba button--round-s button--border-thin tiny">
+                                            <i class="button__icon fi-previous size-16"></i>
+                                            <span>Previous</span>
+                                        </asp:LinkButton>
+                                    </asp:Panel>
+
+
+                                    <asp:Panel runat="server" ID="pnlStartBtn" CssClass="small-24 medium-6 medium-push-0 large-3 columns text-right" Visible="false">
+                                        <br class="show-for-small-down" />
+                                        <asp:LinkButton runat="server" ID="lbtnStart" CssClass="shikobaButton nextPg green button--shikoba button--round-s button--border-thin tiny">
+                                            <i class="button__icon fi-play size-16"></i>
+                                            <span>Start</span>
+                                        </asp:LinkButton>
+                                        <br class="show-for-small-down" />
+                                    </asp:Panel>
+
+
+                                    <asp:Panel runat="server" ID="pnlComplete" CssClass="small-24 medium-6 medium-push-0 large-3 columns text-right" Visible="false">
+                                        <asp:LinkButton runat="server" ID="lbtnComplete" CssClass="shikobaButton nextPg green button--shikoba button--round-s button--border-thin tiny">
+                                            <i class="button__icon fi-check size-18"></i>
+                                            <span>Complete</span>
+                                        </asp:LinkButton>
+                                    </asp:Panel>
+
+
+                                    <asp:Panel runat="server" ID="pnlNext" CssClass="small-12 medium-6 medium-push-0 large-3 columns text-right">
+                                        <br class="show-for-small-down" />
+                                        <asp:LinkButton runat="server" ID="lbtnNext" CssClass="shikobaButton nextPg green button--shikoba button--round-s button--border-thin tiny">
+                                            <i class="button__icon fi-next size-16"></i>
+                                            <span>Next / Skip</span>
+                                        </asp:LinkButton>
+                                        <br class="show-for-small-down" />
+                                    </asp:Panel>
+
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row organicTabs">
+                        <div class="large-24 columns wizard">
+                            <asp:MultiView runat="server" ID="mvWizardSteps" ActiveViewIndex="0">
+                                <asp:View runat="server">
+                                    <div class="row">
+                                        <div class="large-20 large-push-2 columns">
+                                            <br class="hide-for-medium-down" />
+                                            <asp:Literal runat="server" ID="ltrlIntroduction" />
+                                            <br />
+                                        </div>
+                                    </div>
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <uc:editTab_Images runat="server" ID="uceditTab_Images_Wiz" />
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <uc:editTab_Content runat="server" ID="uceditTab_Content_Wiz" />
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <uc:editTab_Categories runat="server" ID="uceditTab_Categories_Wiz" />
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <uc:editTab_Phases runat="server" ID="uceditTab_Phases_Wiz" />
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <div class="timeline">
+                                        <uc:editTab_Timeline runat="server" ID="uceditTab_Timeline_Wiz" />
+                                    </div>
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <div class="rewards">
+                                        <uc:editTab_Rewards runat="server" ID="uceditTab_Rewards_Wiz" />
+                                    </div>
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <uc:editTab_TeamMembers runat="server" ID="uceditTab_TeamMembers_Wiz" />
+                                </asp:View>
+                                <asp:View runat="server">
+                                    <div class="row">
+                                        <div class="large-20 large-push-2 columns">
+                                            <br />
+                                            <asp:Literal runat="server" ID="ltrlCompletion" />
+                                            <br />
+                                        </div>
+                                    </div>
+                                </asp:View>
+                            </asp:MultiView>
+                        </div>
+                    </div>
+
+                </div>
+            </asp:View>
+        </asp:MultiView>
+        <div class="hide hiddenFields">
+            <asp:HiddenField runat="server" ID="hfldCurrentUserId" />
+            <input type="hidden" runat="server" value="" id="hfldActiveTab" class="hfldActiveTab" />
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

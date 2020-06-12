@@ -1,0 +1,102 @@
+﻿Imports Common
+
+Partial Class UserControls_Home_SearchPanel
+    Inherits System.Web.UI.UserControl
+
+#Region "Properties"
+    Public Enum panelSizes
+        Full = 0
+        Macro = 1
+        Micro = 2
+    End Enum
+    Dim _uHelper As Uhelper = New Uhelper()
+    Public WriteOnly Property panelSize() As panelSizes
+        Set(value As panelSizes)
+            mvSearchPanels.ActiveViewIndex = value
+        End Set
+    End Property
+#End Region
+
+#Region "Handles"
+    Private Sub UserControls_Home_SearchPanel_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            Try
+                'if search querystring exists, add it to search boxes.
+                If Request.QueryString(queryParameters.Search) IsNot Nothing Then
+                'Obtain querystring
+                Dim searchBy As String = HttpUtility.UrlDecode(Request.QueryString(queryParameters.Search).ToString)
+
+                'Set default text as search text.
+                txbSearchCampaigns_full.Text = searchBy
+                txbSearchCampaigns_macro.Text = searchBy
+                txbSearchCampaigns_micro.Text = searchBy
+            Else
+                'Set default text.
+                txbSearchCampaigns_full.Text = Miscellaneous.searchBox
+                txbSearchCampaigns_macro.Text = Miscellaneous.searchBox
+                txbSearchCampaigns_micro.Text = Miscellaneous.searchBox
+            End If
+            Catch ex As Exception
+            Dim sb As New StringBuilder()
+                sb.AppendLine("\UserControls\UserControls_Home_SearchPanel.ascx.vb : UserControls_Home_SearchPanel_Load()")
+                saveErrorMessage(getLoggedInMember, ex.ToString, sb.ToString())
+
+            End Try
+        End If
+    End Sub
+    Private Sub lbtnSearchCampaigns_full_Click(sender As Object, e As EventArgs) Handles lbtnSearchCampaigns_full.Click
+        Try
+            'If search data is added in field, send user to campaign list page.
+            If Not String.IsNullOrEmpty(txbSearchCampaigns_full.Text.Trim) AndAlso Not (txbSearchCampaigns_full.Text.Trim = Common.Miscellaneous.searchBox) Then
+            'Encode search text for url
+            Dim searchQuery As String = HttpUtility.UrlEncode(txbSearchCampaigns_full.Text.Trim)
+            'Redirect with search criteria.
+            Response.Redirect(_uHelper.Get_IPublishedContentByID(siteNodes.Campaigns).Url & "?" & queryParameters.Search & "=" & searchQuery, False)
+            HttpContext.Current.ApplicationInstance.CompleteRequest()
+        End If
+        Catch ex As Exception
+        Dim sb As New StringBuilder()
+            sb.AppendLine("\UserControls\UserControls_Home_SearchPanel.ascx.vb : lbtnSearchCampaigns_full_Click()")
+            saveErrorMessage(getLoggedInMember, ex.ToString, sb.ToString())
+
+        End Try
+    End Sub
+    Private Sub lbtnSearchCampaigns_macro_Click(sender As Object, e As EventArgs) Handles lbtnSearchCampaigns_macro.Click
+        Try
+            'If search data is added in field, send user to campaign list page.
+            If Not String.IsNullOrEmpty(txbSearchCampaigns_macro.Text.Trim) AndAlso Not (txbSearchCampaigns_macro.Text.Trim = Common.Miscellaneous.searchBox) Then
+            'Encode search text for url
+            Dim searchQuery As String = HttpUtility.UrlEncode(txbSearchCampaigns_macro.Text.Trim)
+            'Redirect with search criteria.
+            Response.Redirect(_uHelper.Get_IPublishedContentByID(siteNodes.Campaigns).Url & "?" & queryParameters.Search & "=" & searchQuery, False)
+            HttpContext.Current.ApplicationInstance.CompleteRequest()
+        End If
+        Catch ex As Exception
+        Dim sb As New StringBuilder()
+            sb.AppendLine("\UserControls\UserControls_Home_SearchPanel.ascx.vb : lbtnSearchCampaigns_macro_Click()")
+            saveErrorMessage(getLoggedInMember, ex.ToString, sb.ToString())
+
+        End Try
+    End Sub
+    Private Sub lbtnSearchCampaigns_micro_Click(sender As Object, e As EventArgs) Handles lbtnSearchCampaigns_micro.Click
+        Try
+            'If search data is added in field, send user to campaign list page.
+            If Not String.IsNullOrEmpty(txbSearchCampaigns_micro.Text.Trim) AndAlso Not (txbSearchCampaigns_micro.Text.Trim = Common.Miscellaneous.searchBox) Then
+            'Encode search text for url
+            Dim searchQuery As String = HttpUtility.UrlEncode(txbSearchCampaigns_micro.Text.Trim)
+            'Redirect with search criteria.
+            Response.Redirect(_uHelper.Get_IPublishedContentByID(siteNodes.Campaigns).Url & "?" & queryParameters.Search & "=" & searchQuery, False)
+            HttpContext.Current.ApplicationInstance.CompleteRequest()
+        End If
+        Catch ex As Exception
+        Dim sb As New StringBuilder()
+            sb.AppendLine("\UserControls\UserControls_Home_SearchPanel.ascx.vb : lbtnSearchCampaigns_micro_Click()")
+            saveErrorMessage(getLoggedInMember, ex.ToString, sb.ToString())
+
+        End Try
+    End Sub
+#End Region
+
+#Region "Methods"
+#End Region
+End Class

@@ -1,0 +1,274 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="FinancialManagement.master.vb" Inherits="Masterpages_FinancialManagement" %>
+<%--<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagName="TextBox_Animated" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/AlertMsg.ascx" TagName="AlertMsg" TagPrefix="uc" %>--%>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" runat="Server"></asp:Content>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="Server">
+    <%--<uc:Banner runat="server" ID="ucBanner" />
+    <br />
+    <div class="FinancialManagement">
+        <div class="row">
+            <div class="small-24 columns">
+                <h1>Financial Manager</h1>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="columns">
+                <p>General text about purpose of this section to go here...</p>
+                <input type="checkbox" id="cbAcceptTerms" name="cbAcceptTerms" required>
+                I accept the Terms and Conditions&nbsp;&nbsp;
+                        <asp:HyperLink runat="server" ID="hlnkReadServiceAgr" Text="Read service agreement" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-20 columns">
+                <br />
+                <h2>Account Holder Information</h2>
+            </div>
+            <div class="large-4 columns text-right">
+                <br />
+                <button type="button" id="btnCopyFromAcct" class="button tiny radius">Copy from Account</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-24 columns alertMsgs">
+                <uc:AlertMsg runat="server" ID="ucAlertMsg_Success" AlertMsg="Congradulations!" MessageType="Success" isHidden="true" />
+                <uc:AlertMsg runat="server" ID="ucAlertMsg_Error" AlertMsg="Error" MessageType="Alert" isHidden="true" />
+                <uc:AlertMsg runat="server" ID="ucAlertMsg_Info" AlertMsg="Read-Only Mode" MessageType="Info" isHidden="true" />
+            </div>
+        </div>
+
+
+
+        <div class="row collapseInput">
+            <div class="large-12 columns">
+                <fieldset>
+                    <legend>Account Holder</legend>
+                    <div class="row collapse">
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_FirstName">
+                                <input type="text" id="txbBankInfo_FirstName" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">First Name 
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_LastName">
+                                <input type="text" id="txbBankInfo_LastName" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Last Name 
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row collapse">
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_Email">
+                                <input type="text" id="txbBankInfo_Email" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Email
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-12 columns">
+                            <span class="input input--manami pnlBankInfo_DateOfBirth">
+                                <input type="date" id="txbBankInfo_DateOfBirth" class="flatpickr input__field input__field--manami txbBankInfo_DateOfBirth">
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Date of Birth 
+                                        <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Bank Account Information</legend>
+                    <div class="row">
+                        <div class="large-14 columns">
+                            <span class="input input--manami">
+                                <input type="number" id="txbBankInfo_RoutingNo" class="input__field input__field--manami" value="110000000" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Routing Number 
+                                                <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+
+                            <span class="input input--manami">
+                                <input type="number" id="txbBankInfo_AcctNo" class="input__field input__field--manami" value="000123456789" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Account Number 
+                                                <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+
+                            <span class="input input--manami">
+                                <input type="number" id="txbBankInfo_SSN" class="input__field input__field--manami" value="123456789" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Social Security Number 
+                                                <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-10 columns">
+                            <h6>Account's Location</h6>
+                            <ul id="rblBankInfo_Country" class="buttonStyle">
+                                <li>
+                                    <input id="rblBankInfo_Country_0" type="radio" name="rblBankInfo_Country" value="US|USD" checked="checked">
+                                    <label for="rblBankInfo_Country_0">United States</label>
+                                </li>
+                            </ul>
+                            <div class="smallComment text-right">More countries coming soon</div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="large-12 columns">
+                <fieldset>
+                    <legend>Address</legend>
+                    <div class="row collapse">
+
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_Address1">
+                                <input type="text" id="txbBankInfo_Address1" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Address 1
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_Address2">
+                                <input type="text" id="txbBankInfo_Address2" class="input__field input__field--manami">
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Address 2
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+
+                        <div class="large-12 columns">
+                            <span class="input input--manami txbBankInfo_City">
+                                <input type="text" id="txbBankInfo_City" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">City
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-6 columns">
+                            <span class="input input--manami txbBankInfo_State">
+                                <input type="text" id="txbBankInfo_State" class="input__field input__field--manami" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">State
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="large-6 columns">
+                            <span class="input input--manami txbBankInfo_Postal">
+                                <input type="text" id="txbBankInfo_Postal" class="input__field input__field--manami" maxlength="5" required>
+                                <label class="input__label input__label--manami">
+                                    <span class="input__label-content input__label-content--manami">Postal 
+			                                    <span class="errorMsg">*</span>
+                                    </span>
+                                </label>
+                            </span>
+                        </div>
+
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Id Upload</legend>
+                    <br />
+                    <div class="text-center pnlUpload dropzone" id="dropzone">
+                        <div class="dz-message">
+                            <div class="pnlUploadImage">
+                                <h3>Drag & Drop Image Here</h3>
+                            </div>
+                            <div class="text-center pnlUploadLink">
+                                <h5>- or click here to upload -</h5>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="text-right btnSubmitPnl">
+                    <button type="submit" id="btnSubmitBankInfo" class="button radius">Submit</button>
+                </div>
+            </div>
+        </div>--%>
+
+
+        <%--<div class="row">
+                    <div class="columns">
+                        <fieldset style="border: 1px solid #c60f13; background-color: rgba(198, 15, 19, 0.10);">
+                            <legend style="color: #c60f13;">TEST ACCOUNTS</legend>
+                            <div class="row">
+                                <div class="large-4 columns">
+                                    110000000<br />
+                                    <br />
+                                    000123456789<br />
+                                    000111111116<br />
+                                    000111111113<br />
+                                    000222222227<br />
+                                    000333333335<br />
+                                    000444444440
+                                </div>
+                                <div class="large-12 columns end">
+                                    STRIPE TEST BANK US routing number<br />
+                                    <br />
+                                    Transfer succeeds.<br />
+                                    Transfer fails with a no_account code.<br />
+                                    Transfer fails with an account_closed code.<br />
+                                    Transfer fails with an insufficient_funds code.<br />
+                                    Transfer fails with a debit_not_authorized code.<br />
+                                    Transfer fails with an invalid_currency code.
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>--%>
+    <%--</div>
+
+
+    <div class="hide hiddenFields">
+        <asp:HiddenField runat="server" ID="hfldCurrentUserId" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldPublicKey" ClientIDMode="Static" />
+
+        <asp:HiddenField runat="server" ID="hfldCampaignAcctId" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldFileUploadId" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldBankAcctToken" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldBankAcctId" ClientIDMode="Static" />
+
+        <asp:HiddenField runat="server" ID="hfldCampaignAcctId_ParamName" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldCurrentUserId_ParamName" ClientIDMode="Static" />
+        <asp:HiddenField runat="server" ID="hfldBankAcctId_ParamName" ClientIDMode="Static" />
+    </div>--%>
+</asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

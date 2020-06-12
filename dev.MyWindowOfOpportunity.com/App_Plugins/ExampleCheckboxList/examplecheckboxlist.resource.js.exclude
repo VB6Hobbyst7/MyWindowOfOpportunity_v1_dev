@@ -1,0 +1,13 @@
+﻿angular.module('umbraco.resources').factory('exampleCheckboxListResource',
+    function ($q, $http) {
+        return {
+            getAll: function (nodeId) {
+                return $http.get("/ExamplesHandler.ashx", {
+                    params: {
+                        nodeId: nodeId
+                    }
+                });
+            }
+        };
+    }
+);

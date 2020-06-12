@@ -1,0 +1,16 @@
+﻿/*Postback spinner*/
+/**********************************************************************/
+.spinner{display:block;position:fixed;top:50%;left:50%;transform:translate(-100%,-50%);z-index:10000}
+.spinner svg{max-width:100%;width:150px;height:auto}
+.spinner svg circle{animation:trails 2500ms linear infinite;fill:none;stroke:#ffffff;stroke-dasharray:500;stroke-dashoffset:500;stroke-width:4}
+
+.spinner svg circle:nth-child(1){stroke: #316dbc;animation-delay:100ms}
+.spinner svg circle:nth-child(2){stroke: #29ABE2;animation-delay:200ms}
+.spinner svg circle:nth-child(3){stroke: #39B54A;animation-delay:300ms}
+.spinner svg circle:nth-child(4){stroke: #8cc63f;animation-delay:400ms}
+.spinner svg circle:nth-child(5){stroke: #f2d340;animation-delay:500ms}
+
+@keyframes trails{
+    from{stroke-dashoffset:-500}
+    to{stroke-dashoffset:500}
+}

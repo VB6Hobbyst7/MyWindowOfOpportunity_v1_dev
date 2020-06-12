@@ -1,0 +1,75 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Home.master.vb" Inherits="Masterpages_Home" EnableViewState="false" %>
+
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/Categories.ascx" TagName="Categories" TagPrefix="uc" %>
+<%--<%@ Register Src="/UserControls/SearchPanel.ascx" TagName="SearchPanel" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TrendingCampaigns.ascx" TagName="TrendingCampaigns" TagPrefix="uc" %>--%>
+<%@ Register Src="/UserControls/SampleCampaigns.ascx" TagName="SampleCampaigns" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/HowThisWorks.ascx" TagName="HowThisWorks" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/LetsGetStarted.ascx" TagName="LetsGetStarted" TagPrefix="uc" %>
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server"></asp:Content>
+
+<asp:Content ID="cContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <uc:Banner runat="server" ID="ucBanner" />
+    <br class="hide-for-medium-down" />
+
+
+    <div class="row shadow generalTextPnl">
+        <div class="small-24 medium-18 large-20 medium-push-3 large-push-2 columns text-center">
+            <br />
+            <h1>Crowdfunding re-engineered. &nbsp;<br class="show-for-medium-only" />
+                Begin your Window of Opportunity today!</h1>
+            <div>*In celebration of launching our new website <em>MyWindowOfOpportunity.com</em> is waiving our fees for a limited time.  <a href="./help/#pricingfees">Learn more</a>.</div>
+            <%--<div>*In celebration of launching our new site we are waiving our fees for a limited time.  <a href="./help/#pricingfees">Learn more</a>.</div>--%>
+            <%--<div>*Start a campaign before <u>August 1</u><sup>st</sup> and we will waive our fees.  <a href="./help/#pricingfees">Learn more</a>.</div>--%>
+            <%--<div>Learn more about our <a href="./campaign/#createyourcampaign">Multi-Phase Campaigns</a> and how <a href="./help/#pricingfees">Your First Phase Is Free</a><sup>*</sup>.</div>--%>
+            <br />
+        </div>
+        <div class="hide-for-small-down medium-3 large-2 columns text-right">
+            <img src="/Images/Logo/smallLogo_transparent.png">
+        </div>
+    </div>
+    <br class="hide-for-medium-down" />
+
+
+    <div class="row shadow whiteBg">
+        <div class="small-24 columns">
+            <br />
+        </div>
+        <div class="small-24 large-12 large-push-12 columns">
+            <%--<uc:TrendingCampaigns runat="server" ID="ucTrendingCampaigns" />--%>
+            <uc:SampleCampaigns runat="server" />
+        </div>
+        <div class="large-12 large-pull-12 columns">
+            <%--<uc:Categories runat="server" ID="ucCategories" />--%>
+
+            <h2>CROWDFUNDING 2.0</h2>
+            
+            <p>Welcome to Crowdfunding Revolutionized.  With <strong>My Window of Opportunity</strong> your campaigns can now be more successful then ever before, and the success of your idea is only a click away.</p>
+            <p>Nervous about asking for too much money upfront for your project?  With <strong>My Window of Opportunity</strong> you can divide your campaigns into smaller, more manageable phases, asking only for what you need in that phase of your campaign’s lifecycle.  </p>
+            <p>Are you sure you have enough interest to fund your campaign?  <strong>My Window of Opportunity</strong> allows you to launch a <strong>Discovery Phase</strong> to ensure you have enough interest before you launch your campaign.</p>
+            <h3 style="text-align: center;"><br />So what are you waiting for?  Creating a campaign has never been easier.  Don’t miss out on your <strong>Window of Opportunity</strong> Today.</h3>
+
+        </div>
+
+    </div>
+    <br />
+
+
+    <%--<uc:SearchPanel runat="server" ID="ucSearchPanel" panelSize="Macro" />
+    <br />--%>
+
+
+    <uc:HowThisWorks runat="server" ID="ucHowThisWorks" />
+    <br />
+
+
+    <uc:LetsGetStarted runat="server" ID="ucLetsGetStarted" />
+
+
+    <asp:ContentPlaceHolder ID="cphMainContent" runat="server" />
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

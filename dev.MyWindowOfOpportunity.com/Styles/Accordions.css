@@ -1,0 +1,84 @@
+﻿       
+/********* GENERAL ACCORDION ********/
+.accordion .accTopBanner {height:11px;}
+.accordion .accName, .accordion .accClosed, .accordion .accOpen {/*background-color:#39B54A;*/color:white;font-size:18px;font-weight:bold;}
+        
+.accordion .accClosed {display:none;}
+.accordion .active .accClosed {display:block;}
+        
+.accordion .accOpen {display:block;}
+.accordion .active .accOpen {display:none;}
+
+
+.accordion .accMember {background-color:#8ccc95;color:black;padding:12px;}
+.accordion .accMemberName {color:white;font-size:18px;font-weight:bold;}
+.accordion .smallLogo img {margin-top: -30px;}
+.accordion .accordion p {font-size:13px;}
+
+                
+/********* MEMBER ACCORDION ********/
+.accordion.memberData .accTopBanner {background-color:#39B54A;height:11px;}
+.accordion.memberData .accordion-navigation {margin:0}
+.accordion.memberData .accordion-navigation>.content {padding: 0;}
+.accordion.memberData .accordion-navigation > a {background-color:transparent;padding:0;}
+.accordion.memberData .accName, .accordion.memberData .accClosed, .accordion.memberData .accOpen {background-color:#39B54A;}
+.accordion.memberData .accordion-navigation>a .member {background-color:transparent;transition: background-color .5s;}
+.accordion.memberData .accordion-navigation > a .spacer {}
+.accordion.memberData .accordion-navigation > a .name {}
+.accordion.memberData .accordion-navigation .content.active { background-color: transparent; }
+.accordion.memberData .accordion-navigation>a:hover {background-color:transparent;}
+.accordion.memberData .accordion-navigation>a:hover .member {background-color:#8ccc95;}
+.accordion.memberData .accordion-navigation.active > a .member {background-color:#8ccc95;}
+
+        
+/********* ACTIVE CAMPAIGN ACCORDION ********/
+.accordion.campaignData .accTopBanner {background-color:#51a7e2;height:11px;}
+.accordion.campaignData .accordion-navigation {margin:0}
+.accordion.campaignData .accordion-navigation>.content {padding: 0;}
+.accordion.campaignData .accordion-navigation > a {background-color:transparent;padding:0;}
+.accordion.campaignData .accName, .accordion.campaignData .accClosed, .accordion.campaignData .accOpen {background-color:#51a7e2;}
+.accordion.campaignData .accordion-navigation > a .campaign {background-color:transparent;transition: background-color .5s;}
+.accordion.campaignData .accordion-navigation > a .spacer {}
+.accordion.campaignData .accordion-navigation > a .name {}
+.accordion.campaignData .accordion-navigation .content.active { background-color: transparent; }
+.accordion.campaignData .accordion-navigation > a:hover {background-color:transparent;}
+.accordion.campaignData .accordion-navigation > a:hover .campaign {background-color:#b2d2e5;}
+.accordion.campaignData .accordion-navigation.active > a .campaign {background-color:#b2d2e5;}
+.accordion.campaignData .accordion-navigation > .content .campaign {background-color:#b2d2e5;color:black;padding:12px;}
+.accordion.campaignData .accordion-navigation > .content .campaign h3 {color: white;text-shadow: 1px 1px 1px #316dbc;line-height: 26px;}
+.accordion.campaignData .accordion-navigation > .content .campaign .status {color:#29abe2;font-size:18px;font-weight:bold;padding-top: 9px;padding-bottom: 9px;} 
+.accordion.campaignData .accordion-navigation > .content .campaign .info {color:#316dbc;font-size:17px;}
+.accordion.campaignData .accordion-navigation > .content .campaign .info .monetary {font-size:40px;}
+.accordion.campaignData .accordion-navigation > .content .campaign .info .monetary sup {font-size: 65%;top: -0.35em;}
+/*.accordion.campaignData .accordion-navigation > .content .campaign .featuredImg {margin-top: -20px;}*/
+
+        
+/********* INACTIVE CAMPAIGN ACCORDION ********/
+.accordion.campaignData.inactive .accTopBanner {background-color:#4e4e4e;height:11px;}
+.accordion.campaignData.inactive .accordion-navigation {margin:0}
+.accordion.campaignData.inactive .accordion-navigation>.content {padding: 0;}
+.accordion.campaignData.inactive .accordion-navigation > a {background-color:transparent;padding:0;}
+.accordion.campaignData.inactive .accName, .accordion.campaignData.inactive .accClosed, .accordion.campaignData.inactive .accOpen {background-color:#4e4e4e;}
+.accordion.campaignData.inactive .accordion-navigation > a .campaign {background-color:transparent;transition: background-color .5s;}
+.accordion.campaignData.inactive .accordion-navigation > a .spacer {}
+.accordion.campaignData.inactive .accordion-navigation > a .name {}
+.accordion.campaignData.inactive .accordion-navigation .content.active { background-color: transparent; }
+.accordion.campaignData.inactive .accordion-navigation > a:hover {background-color:transparent;}
+.accordion.campaignData.inactive .accordion-navigation > a:hover .campaign {background-color:#b7b7b7;}
+.accordion.campaignData.inactive .accordion-navigation.active > a .campaign {background-color:#b7b7b7;}        
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign {background-color:#b7b7b7;color:black;padding:12px;}
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign h3 {color: #E8E8E8; text-shadow: 1px 1px 1px #828282;line-height: 26px;}
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign .status {color:#4e4e4e;background-color:#c9c9c9;font-size:18px;font-weight:bold;padding-top: 9px;padding-bottom: 9px;} 
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign .info {color:#7f7f7f;font-size:17px;}
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign .info .monetary {font-size:40px;}
+.accordion.campaignData.inactive .accordion-navigation > .content .campaign .featuredImg {/*margin-top: -20px;*/} /*Removed because the inactive campaigns on team page was pushing image too high*/
+
+.teamSummary h1 {color: #0071bc;margin-bottom: 0;line-height: 36px;}
+.teamSummary h5 {font-family: 'Vegur';color: #29ABE2;letter-spacing: 0.03em;}
+        
+/*TEST: SLANT ON ACCORDIONS*/
+/*.accClosed, .accOpen  {position:relative;}
+.accClosed:after,.accOpen:after{content:"";position:absolute;top:0;right:-15px;bottom:0;width:30px;-webkit-transform:skew(-45deg);-moz-transform:skew(-45deg);-ms-transform:skew(-45deg);transform:skew(-45deg);z-index:-1}
+.accordion.memberData .accClosed:after, .accordion.memberData .accOpen:after {background: #39B54A;}
+.accordion.campaignData .accClosed:after, .accordion.campaignData .accOpen:after {background: #51a7e2;}
+.accordion.campaignData.inactive .accClosed:after, .accordion.campaignData.inactive .accOpen:after {background: #4e4e4e;}*/

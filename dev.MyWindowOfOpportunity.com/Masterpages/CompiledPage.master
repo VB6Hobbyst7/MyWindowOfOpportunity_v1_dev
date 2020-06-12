@@ -1,0 +1,77 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="CompiledPage.master.vb" Inherits="Masterpages_CompiledPage" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" runat="Server"></asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="Server">
+
+    <%--<asp:GridView runat="server" ID="gv1" />
+    <asp:GridView runat="server" ID="gv2" />
+    <asp:GridView runat="server" ID="gv3" />--%>
+
+    <div class="compiledPg">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+
+        <div class="row">
+            <div class="columns">
+                <h1><asp:Literal runat="server" ID="ltrlTitle" /></h1>
+                <br />
+            </div>
+        </div>
+        <div class="row compiledContent">
+            <div class="small-24 large-8 large-push-16 columns">
+                <asp:ListView runat="server" ID="lstvSideContent">
+                    <LayoutTemplate>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                    </LayoutTemplate>
+                    
+                    <ItemTemplate>
+                        <a id='<%#Eval("anchor")%>' name='<%#Eval("anchor")%>'></a>
+                        <fieldset class="outlinePanel">
+                            <legend><%#Eval("heading")%></legend>
+                            <%#Eval("content")%>
+                        </fieldset>
+                        <br />
+                        <br />
+                    </ItemTemplate>
+
+                    <AlternatingItemTemplate>
+                        <a id='<%#Eval("anchor")%>' name='<%#Eval("anchor")%>'></a>
+                        <fieldset class="secondary outlinePanel">
+                            <legend><%#Eval("heading")%></legend>
+                            <%#Eval("content")%>
+                        </fieldset>
+                        <br />
+                        <br />
+                    </AlternatingItemTemplate>
+
+                    <EmptyDataTemplate></EmptyDataTemplate>
+                </asp:ListView>
+            </div>
+
+            <div class="small-24 large-16 large-pull-8 columns">
+                <asp:ListView runat="server" ID="lstvMainContent">
+                    <LayoutTemplate>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <div data-nodeid='<%#Eval("nodeId")%>'>
+                            <a id='<%#Eval("anchor")%>' name='<%#Eval("anchor")%>'>&nbsp;</a>
+                            <h2><%#Eval("heading")%></h2>
+                            <div>
+                                <%#Eval("content")%>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                    <EmptyDataTemplate></EmptyDataTemplate>  
+                    <ItemSeparatorTemplate><br /></ItemSeparatorTemplate>
+                </asp:ListView>                
+            </div>
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

@@ -1,0 +1,130 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="ContactUs.master.vb" Inherits="Masterpages_ContactUs" %>
+
+<%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagName="TextBox_Animated" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/AlertMsg.ascx" TagName="AlertMsg" TagPrefix="uc" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" runat="Server"></asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="Server">
+    <div id="contactUsPg">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+
+
+        <div class="row">
+            <div class="columns">
+                <h1>
+                    <asp:Literal runat="server" ID="ltrlTitle" /></h1>
+                <p>Please fill out the form below to request a phone call or email from one of our dedicated administrators.</p>
+                <br />
+
+                <div class="row">
+                    <div class="large-14 columns">
+                        <asp:MultiView runat="server" ID="mvContactUs" ActiveViewIndex="0">
+                            <asp:View runat="server" ID="vContactUs">
+                                <div class="row">
+                                    <div class="small-24 medium-12 large-8 columns">
+                                        <uc:TextBox_Animated  runat="server" ID="txbFullName" Title="Your Name" additionalClass="txbFullName" isRequired="true" />
+                                    </div>
+                                    <div class="small-24 medium-12 large-8 columns">
+                                        <uc:TextBox_Animated runat="server" ID="txbEmail" Title="Your Email" additionalClass="txbEmail" isRequired="true" TextMode="_Email" />
+                                    </div>
+                                    <div class="small-24 medium-12 large-8 columns">
+                                        <uc:TextBox_Animated runat="server" ID="txbPhoneNumber" Title="Your Phone Number" additionalClass="txbPhoneNumber" isRequired="false" TextMode="_Phone" />
+                                    </div>
+                                    <div class="small-24 medium-12 large-8 columns">
+                                        <uc:TextBox_Animated runat="server" ID="txbSubject" Title="Subject" additionalClass="txbSubject" isRequired="true" />
+                                        <div id="dvCaptcha" class="g-recaptcha" data-sitekey="6LcppyIUAAAAAOpKjNwKdhHNRzyTbdIOvzxZDn2q"></div>
+                                        <div class="recaptcha-error-message hide">Please verify that you are not a robot.</div>
+                                    </div>
+                                    <div class="small-24 medium-24 large-16 columns">
+                                        <uc:TextBox_Animated runat="server" ID="txbMessage" Title="Message" additionalClass="txbMessage" isRequired="true" isMultiLine="true" />
+                                    </div>
+                                    <div class="small-24 medium-24 large-24 columns text-right">
+                                        <button type="submit" id="btnContactUsPageSubmit" name="btnContactUsPageSubmit" class="shikobaButton nextPg button--shikoba green button--round-s button--border-thin right submit">
+                                            <i class="button__icon fi-next size-24"></i>
+                                            <span>Submit</span>
+                                        </button>
+                                        <asp:Button runat="server" ID="btnSubmitMessage" CssClass="hide" ClientIDMode="Static" />
+                                    </div>
+                                </div>
+                            </asp:View>
+                            <asp:View runat="server" ID="vThankyou">                                
+                                <div class="row">
+                                    <div class="columns">
+                                        <h2>Thank you for your enquiry</h2>
+                                        <br />
+                                        <uc:AlertMsg runat="server" MessageType="Success" AlertMsg="Your message has been submitted and will be addressed promptly." AdditionalText="" />
+                                        <br />
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </asp:View>
+                        </asp:MultiView> 
+                    </div>
+
+                    <div class="large-8 columns panel shadow">
+                        <div class="row">
+                            <div class="small-20 small-push-2 medium-16 medium-push-2 columns">
+                                <br />
+                                <h3>Company Info</h3>
+                                <div><strong>
+                                    <asp:Label ID="lblCompanyName" runat="server"></asp:Label></strong></div>
+                                <div>
+                                    <asp:Label ID="lblAddress" runat="server"></asp:Label><br />
+                                    <asp:Label ID="lblCity" runat="server"></asp:Label>,
+                                    <asp:Label ID="lblState" runat="server"></asp:Label><br />
+                                    <asp:Label ID="lblPostalCode" runat="server"></asp:Label>
+                                </div>
+                                <hr />
+                                <div><strong>P</strong>
+                                    <asp:Label ID="lblPhone" runat="server"></asp:Label></div>
+                                <div><strong>F</strong>
+                                    <asp:Label ID="lblFax" runat="server"></asp:Label></div>
+                                <div><strong>E</strong>  <%--<a href="mailto:support@fifthlabs.com">support@fifthlabs.com</a>--%>
+                                    <asp:HyperLink runat="server" ID="hlnkEmail" NavigateUrl="mailto:" />
+                                </div>
+                                <br />
+                                
+                            </div>
+
+                            <div class="small-20 small-push-2 medium-4 medium-push-2 columns end text-right">
+                                <br class="hide-for-small-down" />
+                                <br class="hide-for-small-down" />
+
+                                <ul class="small-block-grid-6 medium-block-grid-1 large-block-grid-1 socialIcons small-text-center large-text-right">
+                                    <li>
+                                        <a class="button callToAction socialIcon" target="_blank" id="anchor_facebook" runat="server">
+                                            <img class="FacebookIcon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="button callToAction socialIcon" target="_blank" id="anchor_twitter" runat="server">
+                                            <img class="TwitterIcon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="button callToAction socialIcon" target="_blank" id="anchor_linkedin" runat="server">
+                                            <img class="LinkedInIcon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="button callToAction socialIcon mailtoOpen" id="anchor_supportEmail" runat="server">
+                                            <img class="EmailIcon"></a>
+                                    </li>
+
+                                </ul>
+                                <br class="show-for-small-down" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" runat="Server"></asp:Content>

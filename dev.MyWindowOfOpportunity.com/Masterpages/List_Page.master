@@ -1,0 +1,203 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="List_Page.master.vb" Inherits="Masterpages_List_Page" EnableViewState="true" %>
+
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/CampaignPanel.ascx" TagName="CampaignPanel" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/SearchPanel.ascx" TagName="SearchPanel" TagPrefix="uc" %>
+<%@ Reference Control="/UserControls/Accordion.ascx" %>
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server"></asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <div class="listPg">
+
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+        <uc:SearchPanel runat="server" ID="ucSearchPanel" panelSize="Macro" />
+        <br />
+        <div class="row">
+            <div class="columns shadow whiteBg">
+                <br />
+                <br class="show-for-large-up" />
+                <div class="row ">
+
+                    <div class="small-24 medium-24 large-4 columns text-center">
+                        <h5>SEARCH FROM</h5>
+                        <br class="show-for-medium-down" />
+                    </div>
+
+                    <div class="small-24 medium-12 large-4 large-push-8 columns text-center">
+                        <asp:HyperLink runat="server" ID="hlnkReset" CssClass="btnListAll">
+                        <div class="text-center">
+                            <div>LIST BY CATEGORY</div>
+                        </div>
+                        </asp:HyperLink>
+                        <div class="show-for-small-down">
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="small-24 medium-12 large-4 large-push-8 columns text-center">
+                        <asp:HyperLink runat="server" ID="hlnkListAll" CssClass="btnListAll">
+                        <div class="text-center">
+                            <div>LIST ALL</div>
+                        </div>
+                        </asp:HyperLink>
+                    </div>
+
+                    <div class="show-for-medium-down columns">
+                        <hr class="green" />
+                    </div>
+
+                    <div class="small-24 medium-8 large-4 large-pull-8 columns">
+                        <asp:DropDownList runat="server" ID="ddlCategories" CssClass="clearDdl" AutoPostBack="True" />
+                        <div class="show-for-small-down">
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="small-24 medium-8 large-4 large-pull-8 columns">
+                        <asp:DropDownList runat="server" ID="ddlSubcategories" CssClass="clearDdl" AutoPostBack="True" />
+                        <div class="show-for-small-down">
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="small-24 medium-8 large-4 columns end">
+                        <asp:DropDownList runat="server" ID="ddlSortBy" CssClass="clearDdl" AutoPostBack="True">
+                            <asp:ListItem Text="SORT BY"></asp:ListItem>
+                            <asp:ListItem Text="COMPLETED" Value="COMPLETED"></asp:ListItem>
+                            <asp:ListItem Text="DATE" Value="DATE"></asp:ListItem>
+                            <asp:ListItem Text="FAILED" Value="FAILED"></asp:ListItem>
+                            <asp:ListItem Text="NAME" Value="NAME"></asp:ListItem>
+                            <asp:ListItem Text="TEAM NAME" Value="TEAMNAME"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+
+                </div>
+                <br />
+            </div>
+        </div>
+
+        <br />
+        <asp:Label ID="TestNode" runat="server"></asp:Label>
+        <div class="row ">
+            <div class="columns adjustAccordionWidth">
+                <asp:MultiView runat="server" ID="mvLists">
+                    <asp:View runat="server" ID="vFullList">
+                        <asp:PlaceHolder runat="server" ID="phFullList">
+                            <div class="row">
+                                <div class="large-12 columns text-right">
+                                    <asp:Image runat="server" ID="imgFullList" CssClass="categoryIcon" />
+                                </div>
+
+                                <div class="large-12 columns text-left">
+                                    <h6 runat="server" id="h1" class="preTitle">CAMPAIGNS RELATED TO</h6>
+
+                                    <h1 class="">
+                                        <asp:Literal runat="server" ID="ltrlTitle">All CAMPAIGNS</asp:Literal>
+                                    </h1>
+                                    <br />
+                                </div>
+
+                            </div>
+                        </asp:PlaceHolder>
+
+
+                        <asp:PlaceHolder runat="server" ID="phAllCampaigns" Visible="false">
+                            <div class="row">
+                                <div class="columns text-center">
+                                    <h1>All Campaigns</h1>
+                                </div>
+                            </div>
+                        </asp:PlaceHolder>
+
+                        <fieldset class="outlinePanel ">
+                            <legend class="text-right"></legend>
+
+                            <asp:Panel runat="server" ID="pnlFullList" CssClass="row ">
+                                <div class="columns">
+                                    <div class="pagination-page"></div>
+                                    <br class="show-for-large-up" />
+
+                                    <div class="" data-equalizer="titleSection">
+                                        <asp:ListView runat="server" ID="lstviewCampaigns">
+                                            <LayoutTemplate>
+                                                <div data-equalizer="cheer">
+                                                    <div data-equalizer="title">
+                                                        <div data-equalizer="statistics">
+                                                            <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-6 uCampaigns_container" data-equalizer="description">
+                                                                <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                                <li>
+                                                    <uc:CampaignPanel runat="server" ID="ucCampaignPanel" CampaignSummary='<%# Container.DataItem %>' />
+
+                                                    <div class="show-for-small-down">
+                                                        &nbsp;<br />
+                                                    </div>
+
+                                                </li>
+                                            </ItemTemplate>
+                                            <EmptyDataTemplate>
+                                                <h5 class="text-center">Sorry, no active campaigns are available for this category.</h5>
+                                            </EmptyDataTemplate>
+                                        </asp:ListView>
+                                    </div>
+
+                                    <br class="show-for-large-up" />
+                                    <div class="pagination-page"></div>
+                                </div>
+                            </asp:Panel>
+
+                        </fieldset>
+
+                    </asp:View>
+                    <asp:View runat="server" ID="vPartialList">
+                        <asp:PlaceHolder runat="server" ID="phAllCategories" Visible="false">
+                            <div class="row">
+                                <div class="columns">
+                                    <h1 class="text-center">Campaigns by Category</h1>
+                                    <br />
+                                </div>
+                            </div>
+                        </asp:PlaceHolder>
+
+
+                        <asp:PlaceHolder runat="server" ID="phSelectedCategory" Visible="false">
+                            <div class="row">
+                                <div class="small-6 medium-12 large-12 columns text-right">
+                                    <asp:Image runat="server" ID="imgSelectedCategory" CssClass="categoryIcon" />
+                                </div>
+                                <div class="small-18 medium-12 large-12 columns text-left">
+                                    <h6 runat="server" id="h6PreTitle_partial" class="preTitle">CAMPAIGNS RELATED TO</h6>
+                                    <h1><asp:Literal runat="server" ID="ltrlListName" /></h1>
+                                </div>
+                            </div>
+                            <br />
+                            <asp:PlaceHolder runat="server" ID="phNoCampaigns" Visible="false">
+                                <br />
+                                <h5 class="text-center">Sorry, no active campaigns are available for this category.</h5>
+                            </asp:PlaceHolder>                            
+                        </asp:PlaceHolder>
+
+
+                        <div class="row">
+                            <div class="columns">
+                                <asp:PlaceHolder runat="server" ID="phAccordions" />
+                            </div>
+                        </div>
+                    </asp:View>
+                </asp:MultiView>
+                <br />
+            </div>
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

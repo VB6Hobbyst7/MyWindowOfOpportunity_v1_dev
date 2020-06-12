@@ -1,0 +1,20 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Standard_Page.master.vb" Inherits="Masterpages_Standard_Page" EnableViewState="true" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server"></asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+    <div id="standardPg">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+        <div class="row">
+            <div class="small-24 columns">
+                <h1>
+                    <asp:Literal runat="server" ID="ltrlTitle" /></h1>
+                <umbraco:Item runat="server" Field="content" />
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

@@ -1,0 +1,24 @@
+﻿<style>
+.resendAuthEmailController {}
+.resendAuthEmailController p {}
+.resendAuthEmailController h4 {color: #666;}
+.resendAuthEmailController input[type=text] {font-weight: bold;color: #8d869c;border-width: 0; background-color: transparent;width: 100%;cursor: text;}
+.resendAuthEmailController a {color: #549dd8; text-decoration: underline;}
+.resendAuthEmailController a:hover {color: #2573B1;}
+.resendAuthEmailController button {margin-right:24px;height: 28px;color: #fff;background-color: #41365a;border: 1px solid #2e2247;}
+.resendAuthEmailController button:hover {background-color: #8d869c;}
+.resendAuthEmailController .alertMsg {color: #B91800;}
+.resendAuthEmailController .msg {color: green;}
+</style>
+
+
+<div class="resendAuthEmailController" ng-controller="resendAuthEmailController">
+    
+    <button >Resend Authorization Email</button>        
+    
+    <br /><br />
+    <div>
+        <div><label class="msg hide">An authorization email has been resubmitted to this user.</label></div>
+        <div><label class="alertMsg hide">An error occured.  Please reach out to your development department to correct the issue.</label></div>
+    </div>
+</div>

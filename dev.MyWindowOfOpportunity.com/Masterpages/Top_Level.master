@@ -1,0 +1,147 @@
+﻿<%@ Master Language="VB" CodeFile="Top_Level.master.vb" Inherits="Masterpages_Top_Level" EnableViewState="true" %>
+<%@ Register Src="/UserControls/Footer.ascx" TagName="Footer" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/NavMinor.ascx" TagName="NavMinor" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/NavMain.ascx" TagName="NavMain" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/ScreenSize.ascx" TagName="ScreenSize" TagPrefix="uc" %>
+<%@ Register Src="~/UserControls/DownForMaintenance.ascx" TagPrefix="uc" TagName="DownForMaintenance" %>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head id="Head1" runat="server">
+    
+    <!-- =============================================== -->
+    <asp:PlaceHolder runat="server">
+        <%=SEOChecker.Library.MetaData.Current.RenderTags() %>
+    </asp:PlaceHolder>
+    <!-- =============================================== -->
+    
+    <!-- META TAGS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/favicon.png">
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="/Bundles/bundledStyles.min.css?v=21" />
+       
+    <%--ANALYTICS--%>
+    <script>
+        //(function (i, s, o, g, r, a, m) {
+        //    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        //        (i[r].q = i[r].q || []).push(arguments)
+        //    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        //    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        //})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        //ga('create', 'UA-101154602-1', 'auto');
+        //ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript" src="/Scripts/jquery/jquery-2.2.4.js"></script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '157177198418344',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.12'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- FINAL HEADER TAGS -->
+    <asp:ContentPlaceHolder ID="cphHeadContent" runat="server" />
+</head>
+<body>
+
+    <a name="topAnchor"></a>
+    <form id="form1" runat="server" method="post">
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+        <div class="spinner" id="spinner">
+            <div class="loader">
+                <div class="loader-inner">
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                    <div class="loader-line-wrap">
+                        <div class="loader-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+
+                <!-- close the off-canvas menu -->
+                <a class="exit-off-canvas"></a>
+                <uc:ScreenSize runat="server" ID="ucScreenSize" Visible="false" />
+                
+                <div>
+                    <uc:NavMinor runat="server" ID="ucNavMinor" />
+                    <uc:NavMain runat="server" ID="ucNavMain" />
+                    <asp:ContentPlaceHolder ID="cphMainContent" runat="server" />
+                    <uc:DownForMaintenance runat="server" ID="DownForMaintenance" Visible="false" />
+                    <uc:Footer runat="server" ID="ucFooter" />
+                </div>
+            </div>
+        </div>
+        <asp:HiddenField ID="hdnRating" runat="server" Value="0" />
+
+        <script type="text/javascript" src="/ckeditor_v4_7/ckeditor/ckeditor.js?v=01"></script>
+        <script type="text/javascript" src="/ckeditor_v4_7/ckeditor/adapters/jquery.js?v=01"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+        <script type="text/javascript" src="/Bundles/bundledScripts.min.js?v=17"></script>
+
+        <asp:ContentPlaceHolder ID="cphFinalScripts" runat="server" />
+        
+        <script type="text/javascript">
+            //Lord Jesus Christ, most merciful Saviour of the world, we humbly beseech You, by Your most Sacred Heart, that all the sheep who stray out of Your fold may in one days be converted to You, the Shepherd and Bishop of their souls, who lives and reigns with God the Father in the unity of the Holy Spirit, world without end.  Amen.
+            //
+            //O Father, in the name of Your Son Jesus, and in the power and authority of the Holy Spirit, I ask that You fill all those who come to this site with the knowledge of Your will through all spiritual wisdom and understanding. Enlighten these precious children of Yours, dear Lord! Teach these dear ones to live in a manner that is worthy of You, so as to be fully pleasing to You, full of good works, bearing good fruits and ever growing in knowledge of You. Strengthen these lost lambs, dear Lord, with every power of Your Holy Spirit, in accordance with Your might, for all endurance and patience, with joy, giving thanks to You O Father! Make Your children fit to share in the inheritance of the holy ones in the Light. Deliver these beloved ones from the power of darkness and transfer them all into the kingdom of Your Beloved Son, Jesus, in whom is redemption and the forgiveness of sins. Amen.
+            //
+            //Oh glorious patriarch St. Joseph, who merited to be called "just' by the Holy Ghost, I urgently all the souls who visit this site, which Jesus redeemed at the price of his precious blood.  Thou knowest how deplorable is the state and how unhappy the life of those who have banished this loving savior from their hearts, and how greatly they are exposed to the danger of losing him eternally. Permit not, I beseech thee, that all souls visiting here should continue any longer in their evil ways; preserve them from the danger that threatens them; touch the hearts of the prodigal children and conduct them back to the bosom of the fondest of fathers. Abandon them not, I implore thee, till thou hast opened to them the gates of the heavenly city, where they will praise and bless thee throughout eternity for the happiness which they will owe to thy powerful intercession.  Amen.
+            //
+            //Hail Mary, full of grace, the Lord is with Thee.  Blessed art thow among women, and blessed is the fruit of thy womb Jesus.  Holy Mary, Mother of God, pray for us sinners now and at the hour of our death.  Amen.
+            //
+            //Dear Lord, please bless, protect, convert and save all those who visit this site.  May Your will be done, and may this site be used for Your glory.  Have mercy on your wayward children, and through the most powerful intercession of the Blessed Virgin Mary, I prayer for the salvation of souls and that this site be your success and glory.
+            //
+            //Jesus, Mary and Joseph, I love you.  Save souls, and please bring an end to abortion throughout the world.
+            //
+            //Eternal Father, I offer you the Body and Blood, Soul and Divinity of Your Dearly Beloved Son, Our Lord, Jesus Christ, in atonement for our sins and those of the whole world.
+            //For the sake of His sorrowful Passion, have mercy on us and on the whole world.
+            //
+            //O Blood and Water which gushed forth from the Heart of Jesus as a Fount of Mercy for us, I trust in you.
+        </script>
+
+    </form>
+</body>
+</html>

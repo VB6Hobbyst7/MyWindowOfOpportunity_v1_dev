@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPledges" targetNamespace="http://tempuri.org/dsPledges.xsd" xmlns:mstns="http://tempuri.org/dsPledges.xsd" xmlns="http://tempuri.org/dsPledges.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="umbracoDbDSN" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="umbracoDbDSN (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.umbracoDbDSN.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPledges" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsPledges" msprop:Generator_UserDSName="dsPledges">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtPledges" msprop:Generator_TableClassName="dtPledgesDataTable" msprop:Generator_TableVarName="tabledtPledges" msprop:Generator_TablePropName="dtPledges" msprop:Generator_RowDeletingName="dtPledgesRowDeleting" msprop:Generator_RowChangingName="dtPledgesRowChanging" msprop:Generator_RowEvHandlerName="dtPledgesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtPledgesRowDeleted" msprop:Generator_UserTableName="dtPledges" msprop:Generator_RowChangedName="dtPledgesRowChanged" msprop:Generator_RowEvArgName="dtPledgesRowChangeEvent" msprop:Generator_RowClassName="dtPledgesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pledgeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnpledgeId" msprop:Generator_ColumnPropNameInRow="pledgeId" msprop:Generator_ColumnPropNameInTable="pledgeIdColumn" msprop:Generator_UserColumnName="pledgeId" type="xs:int" />
+              <xs:element name="campaignId" msprop:Generator_ColumnVarNameInTable="columncampaignId" msprop:Generator_ColumnPropNameInRow="campaignId" msprop:Generator_ColumnPropNameInTable="campaignIdColumn" msprop:Generator_UserColumnName="campaignId" type="xs:int" />
+              <xs:element name="phaseId" msprop:Generator_ColumnVarNameInTable="columnphaseId" msprop:Generator_ColumnPropNameInRow="phaseId" msprop:Generator_ColumnPropNameInTable="phaseIdColumn" msprop:Generator_UserColumnName="phaseId" type="xs:int" />
+              <xs:element name="pledgeAmount" msprop:Generator_ColumnVarNameInTable="columnpledgeAmount" msprop:Generator_ColumnPropNameInRow="pledgeAmount" msprop:Generator_ColumnPropNameInTable="pledgeAmountColumn" msprop:Generator_UserColumnName="pledgeAmount" type="xs:decimal" />
+              <xs:element name="memberId" msprop:Generator_ColumnVarNameInTable="columnmemberId" msprop:Generator_ColumnPropNameInRow="memberId" msprop:Generator_ColumnPropNameInTable="memberIdColumn" msprop:Generator_UserColumnName="memberId" type="xs:int" />
+              <xs:element name="pledgeDate" msprop:Generator_ColumnVarNameInTable="columnpledgeDate" msprop:Generator_ColumnPropNameInRow="pledgeDate" msprop:Generator_ColumnPropNameInTable="pledgeDateColumn" msprop:Generator_UserColumnName="pledgeDate" type="xs:dateTime" />
+              <xs:element name="fulfilmentDate" msprop:Generator_ColumnVarNameInTable="columnfulfilmentDate" msprop:Generator_ColumnPropNameInRow="fulfilmentDate" msprop:Generator_ColumnPropNameInTable="fulfilmentDateColumn" msprop:Generator_UserColumnName="fulfilmentDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="reimbursementDate" msprop:Generator_ColumnVarNameInTable="columnreimbursementDate" msprop:Generator_ColumnPropNameInRow="reimbursementDate" msprop:Generator_ColumnPropNameInTable="reimbursementDateColumn" msprop:Generator_UserColumnName="reimbursementDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dtPledges" />
+      <xs:field xpath="mstns:pledgeId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

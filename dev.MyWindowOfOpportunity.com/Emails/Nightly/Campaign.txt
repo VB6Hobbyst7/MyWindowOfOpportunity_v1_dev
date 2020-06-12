@@ -1,0 +1,9 @@
+﻿Hi, [NAME]
+
+
+[MSG]
+
+
+My Window of Opportunity
+A Fifth Labs Company 
+Copyright [YEAR] Fifth Laboratories LLC	

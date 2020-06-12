@@ -1,0 +1,298 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Team.master.vb" Inherits="Masterpages_Team" %>
+
+<%@ Register Src="/UserControls/SocialMediaManager.ascx" TagName="SocialMediaManager" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/Accordion.ascx" TagName="Accordion" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TextBox_Animated.ascx" TagName="TextBox_Animated" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/FeaturedImageSelector.ascx" TagName="FeaturedImageSelector" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TeamImageMngr.ascx" TagName="TeamImageMngr" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/editTab_Images.ascx" TagName="editTab_Images" TagPrefix="uc" %>
+<%@ Register Src="/UserControls/TeamEdit_TeamMembers.ascx" TagName="TeamEdit_TeamMembers" TagPrefix="uc" %>
+<%@ Reference Control="/UserControls/AlertMsg.ascx" %>
+
+
+
+<asp:Content ID="cHeadContent" ContentPlaceHolderID="cphHeadContent" runat="server">
+    <style>
+        /*.teamSummary {}
+        .teamSummary .titleSection {padding:12px;border-width:1px 0;border-style: solid;}
+        .teamSummary .description {padding:12px; font-size: 16px;}
+        .teamSummary .description p {margin:0;}
+        .teamSummary .btnFld {padding:0 12px 12px 12px;}
+        .teamSummary .btnFld a.button {width:100%;}
+        .teamSummary .teamMembers .titleSection {background-color:rgba(140,198,63,.2);border-color:rgba(140,198,63, .5);}
+        .teamSummary .active .titleSection {background-color:rgba(192, 218, 229, 0.5);border-color:rgba(192, 218, 229, 1);}
+        
+        .teamSummary .inactive {-webkit-filter: grayscale(1); filter: grayscale(1);}
+        .teamSummary .inactive .titleSection {background-color:rgba(199, 199, 199, 0.5);border-color:rgba(199, 199, 199, 1);}
+        .teamSummary .inactive .inactiveTxt {font-weight: bold; font-size: 20px;}
+        .teamSummary .inactive .description, .teamSummary .inactive .btnFld  {opacity: 0.6;}*/
+        
+    </style>
+</asp:Content>
+
+<asp:Content ID="cMainContent" ContentPlaceHolderID="cphMainContent" runat="server">
+<%--    <asp:GridView runat="server" ID="gv1" />
+    <asp:GridView runat="server" ID="gv2" />
+    <asp:GridView runat="server" ID="gv3" />
+    <asp:GridView runat="server" ID="gv4" />
+    <asp:GridView runat="server" ID="gv5" />
+    <asp:GridView runat="server" ID="gv6" />
+    <asp:GridView runat="server" ID="gv7" />--%>
+    <div id="teamPg">
+        <uc:Banner runat="server" ID="ucBanner" />
+        <br />
+        <div class="teamSummary">
+            <asp:MultiView runat="server" ID="mviewTeamSummary" ActiveViewIndex="0">
+                <asp:View runat="server" ID="vTeamSummary">
+                    <div class="row">
+                        <div class="medium-16 large-20 columns">
+                            <h1>Team Summary:</h1>
+                            <h5><asp:Literal runat="server" ID="ltrlTeamName" /></h5>
+                            <div class="socialIcons">
+                                <asp:HyperLink runat="server" ID="hlnkFacebook" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                                    <asp:Image runat="server" ID="imgFacebook" CssClass="FacebookIcon" />
+                                </asp:HyperLink>
+
+                                <asp:HyperLink runat="server" ID="hlnkTwitter" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                                    <asp:Image runat="server" ID="imgTwitter" CssClass="TwitterIcon" />
+                                </asp:HyperLink>
+
+                                <asp:HyperLink runat="server" ID="hlnkLinkedIn" CssClass="button callToAction socialIcon" Visible="false" Target="_blank">
+                                    <asp:Image runat="server" ID="imgLinkedIn" CssClass="LinkedInIcon" />
+                                </asp:HyperLink>
+
+                                <asp:HyperLink runat="server" ID="hlnkSupportEmail" CssClass="button callToAction socialIcon" Visible="false">
+                                    <asp:Image runat="server" ID="imgSupportEmail" CssClass="EmailIcon" />
+                                </asp:HyperLink>
+                            </div>
+                        </div>
+                        <div class="medium-8 large-4 columns">
+                            <br class="hide-for-medium" />
+                            <%--<asp:LinkButton runat="server" ID="lbtnEdit" CssClass="shikobaButton nextPg button--shikoba button--round-s button--border-thin blue" Visible="false">
+                                <i class="button__icon fi-page-edit size-16"></i>
+                                <span>Edit</span>
+                            </asp:LinkButton>--%>
+                            <asp:HyperLink runat="server" ID="hlnkEditBtn" CssClass="shikobaButton nextPg button--shikoba button--round-s button--border-thin blue" Visible="false">
+                                <i class="button__icon fi-page-edit size-16"></i>
+                                <span>Edit</span>
+                            </asp:HyperLink>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-24 medium-24 large-8 large-push-16 columns">
+                            <div class="row">
+                                <asp:Panel runat="server" ID="pnlTeamImg" CssClass="small-24 medium-8 large-24 columns">
+                                    <div class="  ">
+                                        <h6 class="hide-for-medium text-right">Meet Our Team</h6>
+                                        <br class="show-for-medium-only" />
+                                        <asp:Image runat="server" ID="imgTeamPhoto" CssClass="imgTeamPhoto" />
+                                        <br />
+                                        <br />
+                                        <br />
+                                    </div>
+                                </asp:Panel>
+                                <asp:Panel runat="server" ID="pnlWhoAreWe" CssClass="small-24 medium-16 large-24 columns">
+                                    <div class="">
+                                        <h6 class="text-right">Who Are We</h6>
+                                        <asp:Literal runat="server" ID="ltrlWhoAreWe" />
+                                    </div>
+                                </asp:Panel>
+                            </div>
+                        </div>
+
+                        <div class="small-24 medium-24 large-16 large-pull-8 columns">
+                       
+                            <h3>Team Members</h3>
+                            <asp:ListView runat="server" ID="lstviewTeamMembers">
+                                <LayoutTemplate>
+                                    <div class="teamMembers" data-equalizer="title">
+                                        <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4" data-equalizer="description">
+                                            <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                                        </ul>
+                                    </div>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                    <li data-campaignid='<%# Eval("MembershipProperties.userId") %>'>
+                                        <div class="CampaignPanel">
+                                            <div class="round border">
+                                                <img class="round topOnly campaignImg" src='<%# Eval("Demographics.photoUrl") %>'>
+                                                <div class="titleSection" data-equalizer-watch="title">
+                                                    <div class="title">
+                                                        <%# Eval("Demographics.firstName") %> <%# Eval("Demographics.lastName") %>
+                                                    </div>
+                                                    <div class="author">
+                                                        <%# iif(Eval("isTeamAdmin") = True, "Team Administrator", "") %>
+                                                    </div>
+                                                </div>
+                                                <div class="description round bottomOnly" data-equalizer-watch="description">
+                                                    <p class="smaller text-left"><%# Eval("Demographics.briefDescription") %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ItemTemplate>
+                                <EmptyDataTemplate>
+                                    <p class="text-center">There are currently no members assigned to this team.</p>
+                                </EmptyDataTemplate>
+                            </asp:ListView>
+
+
+                            <br />
+                            <br />
+                                            
+                            <h3>Campaigns</h3>
+                            <asp:ListView runat="server" ID="lstviewCampaigns">
+                                <LayoutTemplate>
+                                    <div data-equalizer="title">
+                                        <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" data-equalizer="description">
+                                            <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                                        </ul>
+                                    </div>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                    <li data-campaignid='<%# Eval("campaignId") %>' class='<%# iif(Eval("isActive") = True, "active", "inactive") %>'>
+                                        <div class="CampaignPanel">
+                                            <div class="round border">
+                                                <img class="round topOnly campaignImg" src='<%# Eval("imageUrl") %>'>
+
+                                                <div class="titleSection text-left" data-equalizer-watch="title">
+                                                    <div class="title">
+                                                        <%# Eval("title") %>
+                                                    </div>
+                                                    <div class="author">
+                                                        by <%# Eval("teamName") %>
+                                                    </div>
+                                                </div>
+                                                <div class="description" data-equalizer-watch="description">
+                                                    <p class="smaller text-left"><%# Eval("briefSummary") %></p>
+                                                </div>
+                                                <div class="btnFld round bottomOnly">
+                                                    <div class="row">
+                                                        <div class="small-16 columns inactiveTxt">
+                                                            <%# iif(Eval("isActive") = True, "", "INACTIVE") %>
+                                                        </div>
+                                                        <div class="small-8 columns text-right">
+                                                            <a class="button tiny radius secondary" href='<%# Eval("campaignUrl") %>'>View</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ItemTemplate>
+                                <EmptyDataTemplate>
+                                    <p class="text-center">There are currently no active campaigns.</p>
+                                </EmptyDataTemplate>
+                            </asp:ListView>
+                       
+
+                        </div>
+                    </div>
+                </asp:View>
+                <asp:View runat="server" ID="vEditTeam">
+                    <div class="editTeam">
+                        <div class="row ">
+                            <div class="small-24 medium-18 large-16 columns">
+                                <h1>Team Summary:<br class="show-for-small-down" />
+                                    Edit Page</h1>
+                                <h5>
+                                    <asp:Literal runat="server" ID="ltrlTeamName_EditPg" /></h5>
+                            </div>
+                            <div class="small-12 medium-6 large-4 columns">
+                                <br class="hide-for-small-down" />
+                                <br class="hide-for-medium-down" />
+                                
+                                <asp:HyperLink runat="server" ID="hlnkSummaryBtn" CssClass="shikobaButton nextPg button--shikoba button--round-s button--border-thin blue" Visible="true">
+                                    <i class="button__icon fi-next size-16"></i>
+                                    <span>Summary</span>
+                                </asp:HyperLink>
+                                <%--<button type="button" id="btnSummary" name="btnSummary" class="shikobaButton nextPg button--shikoba button--round-s button--border-thin blue">
+                                    <i class="button__icon fi-next size-16"></i>
+                                    <span>Summary</span>
+                                </button>--%>
+                                <%--<asp:Button runat="server" ID="lbtnSummary" CssClass="hide" ClientIDMode="Static" />--%>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="columns">
+                                <br />
+                                <div class="organicTabs">
+                                    <ul class="nav hide-for-small-down">
+                                        <li><a href="#images" class="current">IMAGES</a></li>
+                                        <li><a href="#content">CONTENT</a></li>
+                                        <li class="last"><a href="#teamMembers">TEAM MEMBERS</a></li>
+                                    </ul>
+                                    <ul class="nav mbl small-block-grid-1 show-for-small-down">
+                                        <li><a href="#images" class="current">IMAGES</a></li>
+                                        <li><a href="#content">CONTENT</a></li>
+                                        <li class="last"><a href="#teamMembers">TEAM MEMBERS</a></li>
+                                    </ul>
+                                    <div class="list-wrap">
+                                        <ul id="images">
+                                            <li>
+                                                <uc:TeamImageMngr runat="server" ID="ucTeamImageMngr" />
+                                                <br />
+                                            </li>
+                                        </ul>
+                                        <ul id="content" class="hide">
+                                            <li>
+                                                <div class="pnlSelectFeaturedImage hide">
+                                                    <uc:FeaturedImageSelector runat="server" activeView="SelectImg" ID="ucSelectFeaturedImage" propertyName="teamImage" />
+                                                </div>
+                                                <div class="pnlContentManagement">
+                                                    <div class="row">
+                                                        <div class="large-12 columns">
+                                                            <h6>Brief Summary</h6>
+                                                            <p>Provide a brief description about your team, what your mission is, and future goals you may share.</p>
+                                                            <asp:PlaceHolder runat="server" ID="phAlertMsg" />
+                                                            <textarea id="TemplateContent" name="TemplateContent" class="TemplateContent"></textarea>
+                                                        </div>
+                                                        <div class="large-12 columns">
+                                                            <br class="show-for-small-down" />
+                                                            <br class="show-for-small-down" />
+                                                            <h6>Team Image</h6>
+                                                            <p>Select your team's image that is to be displayed on the team page.</p>
+                                                            <uc:FeaturedImageSelector runat="server" activeView="ShowImg" ID="ucShowFeaturedImg" />
+                                                            <br class="hide-for-small-down" />
+                                                            <br />
+                                                            <h6>Social Media Links</h6>
+                                                            <p>Want people to reach out to your team?  Provide your donors with a means to reach you.</p>
+                                                            <uc:SocialMediaManager runat="server" ID="ucSocialMediaManager" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="large-24 columns">
+                                                            <button type="button" id="btnContentSave" name="btnContentSave" class="shikobaButton nextPg button--shikoba green button--round-s button--border-thin right submit">
+                                                                <i class="button__icon fi-next size-24"></i>
+                                                                <span>Save</span>
+                                                            </button>
+                                                            <asp:Button runat="server" ID="lbtnSaveContent" CssClass="hide" ClientIDMode="Static" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul id="teamMembers" class="hide">
+                                            <li>
+                                                <uc:TeamEdit_TeamMembers runat="server" ID="ucTeamEdit_TeamMembers" />
+                                                <br />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </asp:View>
+            </asp:MultiView>
+            <div class="hide hiddenFields">
+                <input type="hidden" runat="server" value="" id="hfldActiveTab" class="hfldActiveTab" />
+                <input type="hidden" runat="server" value="" id="hdfdTemplateContent" class="hdfdTemplateContent" />
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="cFinalScripts" ContentPlaceHolderID="cphFinalScripts" runat="server"></asp:Content>

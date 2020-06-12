@@ -1,0 +1,11 @@
+﻿Hi, [NAME]
+
+Thank you for becoming a member with us. To complete the creation of your account, simply click the "Verify" button below. 	
+
+Verify Email! [1]
+
+
+Copyright [YEAR] Fifth Laboratories LLC
+A Fifth Labs Company 	
+
+[1] [LINK]

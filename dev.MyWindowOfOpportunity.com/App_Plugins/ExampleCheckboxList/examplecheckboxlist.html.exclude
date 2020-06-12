@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="umbraco">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="PSP.ExampleCheckboxListController">
+        <ul style="margin-left: 0px;">
+            <li ng-repeat="example in examples" style="list-style-type: none;">
+                <input type="checkbox" value="{{example.name}}" ng-model="example.selected" id="{{example.id}}" />
+                {{example.name}}
+            </li>
+            <li ng-show="!examples.length" style="list-style-type: none;">No items to display.</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!--<div ng-controller="MWoO.SimplePropertyEditorcontroller">
+    <div class="radio" ng-repeat="list in lists">
+        <label>
+            <input ng-model="model.value" value="{{list.ListID}}" type="radio" name="list">
+            {{list.Name}}
+        </label>
+    </div>
+</div>-->  

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.125, 8.5" name="linq2Sql">
+  <DataContextMoniker Name="/linq2SqlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="cfdd2ac9-bece-4e75-bbc9-c413a69a1165" absoluteBounds="1.25, 1, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/linq2SqlDataContext/cmsPropertyTypeGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c79e9c5a-2dc9-4fae-9a8e-43a62ce1e2b7" absoluteBounds="1.2650000000000001, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c602b994-e482-4332-8386-7e8e15771ac5" absoluteBounds="3.5, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/linq2SqlDataContext/cmsPropertyType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="830dda04-f6b3-4df4-bd9f-6694b0d53a1d" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8a43bd13-3cc6-4273-bfcc-7d4149db6d9f" absoluteBounds="5.75, 1, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/linq2SqlDataContext/cmsPropertyData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3bf84ba5-51c6-4d81-b175-3ca908c0a868" absoluteBounds="5.765, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2fed94dc-456c-4ee9-b911-744d0fa9c300" absoluteBounds="9.875, 1.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/linq2SqlDataContext/cmsContentXml" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a032f95e-0942-4d88-94a1-becbda81179e" absoluteBounds="9.89, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 1.88544840494792); (3.5 : 1.88544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/linq2SqlDataContext/cmsPropertyTypeGroup/cmsPropertyTypeGroup_cmsPropertyType" />
+      <nodes>
+        <classShapeMoniker Id="cfdd2ac9-bece-4e75-bbc9-c413a69a1165" />
+        <classShapeMoniker Id="c602b994-e482-4332-8386-7e8e15771ac5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.27005126953125); (5.75 : 2.27005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/linq2SqlDataContext/cmsPropertyType/cmsPropertyType_cmsPropertyData" />
+      <nodes>
+        <classShapeMoniker Id="c602b994-e482-4332-8386-7e8e15771ac5" />
+        <classShapeMoniker Id="8a43bd13-3cc6-4273-bfcc-7d4149db6d9f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

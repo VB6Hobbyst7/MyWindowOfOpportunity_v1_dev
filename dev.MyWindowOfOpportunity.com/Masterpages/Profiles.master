@@ -1,0 +1,16 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Masterpages/Top_Level.master" AutoEventWireup="false" CodeFile="Profiles.master.vb" Inherits="Masterpages_Profiles" %>
+<%@ Register Src="/UserControls/User_ForgotPassword.ascx" TagName="fPwd" TagPrefix="ucpwd" %>
+<%@ Register Src="/UserControls/Banner.ascx" TagName="Banner" TagPrefix="uc" %>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHeadContent" Runat="Server">
+      <uc:Banner runat="server" ID="ucBanner" />
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" Runat="Server">
+     <ucpwd:fPwd runat="server" ID="fPwd" />
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphFinalScripts" Runat="Server">
+</asp:Content>

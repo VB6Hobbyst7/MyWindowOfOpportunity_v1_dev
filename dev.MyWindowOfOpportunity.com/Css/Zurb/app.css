@@ -1,0 +1,37 @@
+
+/*@media only screen {
+    .categories li.viewMore a{padding-left:40px!important;}
+    .searchPnl .row h2{font-size:20px;}
+    .space-below{margin-bottom:6px!important;}
+    .img-63{height:63px;}
+    .searchPnl.full .searchBtn{cursor:pointer;padding-left:5px;padding-right:5px;}
+    #ucNavMinor_pnlLoggedIn .top-bar{background-color:#484848;padding-right:12px;}
+    #ucNavMinor_pnlLoggedIn .tab-bar .top-bar-section li:not(.has-form) a:not(.button){background-color:#484848;-moz-transition:all .3s ease 0;-o-transition:all .3s ease 0;-webkit-transition:all .3s ease 0;transition:all .3s ease 0;}
+    #ucNavMinor_pnlLoggedIn .tab-bar .top-bar-section a{background-color:#484848;}
+    #ucNavMinor_pnlLoggedIn .top-bar-section li:not(.has-form) a:not(.button){background:#484848;line-height:normal;padding:3px 5px;}
+    .nav-alter{line-height:normal;}
+    .nopadding{padding:0!important;}
+    .top-bar-section ul li{float:left;}
+    .top-bar-section ul{width:auto;}
+    .top-bar .toggle-topbar.menu-icon{margin-top:0;top:0;}
+    #ucNavMinor_pnlLoggedIn .tab-bar .top-bar-section ul li,#minorNavPnl .top-bar-section ul li,.top-bar.expanded .title-area{background:#484848 none repeat scroll 0 0;}
+}
+
+@media only screen and (max-width: 40em) {
+    #minorNavPnl #ucNavMinor_pnlLoggedOut #loginPanel{left:-65px;}
+    .small-only-24{width:100%;}
+}
+
+@media only screen and (min-width: 40.063em) {
+    #minorNavPnl{padding-left:0!important;padding-right:0!important;}
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    .categories a{font-size:18px!important;}
+    .categories li.viewMore a{padding-left:48px!important;}
+    .searchPnl .row.collapse{padding-top:10px!important;}
+}
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+    .categories a {font-size: 22px !important;}
+}*/

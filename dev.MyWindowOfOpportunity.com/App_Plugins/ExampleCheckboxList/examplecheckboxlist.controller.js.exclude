@@ -1,0 +1,20 @@
+﻿angular.module("umbraco").controller("PSP.ExampleCheckboxListController", function ($scope, exampleCheckboxListResource, $routeParams) {
+    var nodeId = $routeParams.id;
+    exampleCheckboxListResource.getAll(nodeId).then(function (reponse) {
+        $scope.examples = reponse.data;
+    });
+
+    $scope.$on("formSubmitting", function (ev, args) {
+        $scope.model.value = [];
+
+        var selectedExamples = "";
+        angular.forEach($scope.examples, function (value, key) {
+            var itemId = "{ id : " + value.id;
+            var itemSelected = "selected : " + value.selected + "}, ";
+
+            selectedExamples = selectedExamples + itemId.concat(", ", itemSelected);
+        });
+
+        $scope.model.value.push(selectedExamples);
+    });
+});

@@ -1,0 +1,20 @@
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+
+' To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line.
+' <System.Web.Script.Services.ScriptService()> _
+<WebService(Namespace:="http://tempuri.org/")> _
+<WebServiceBinding(ConformsTo:=WsiProfiles.BasicProfile1_1)> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Public Class ErrorMsgHandler
+    Inherits System.Web.Services.WebService
+
+    <WebMethod()>
+    Public Sub saveMsg(ByVal _userId As String, ByVal _exceptionMsg As String, ByVal _generalMsg As String)
+        'Submit error message to umbraco
+        Dim blErrorMsgs As blErrorMsgs = New blErrorMsgs
+        blErrorMsgs.saveErrorMessage(_userId, _exceptionMsg, _generalMsg)
+    End Sub
+
+End Class

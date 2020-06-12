@@ -1,0 +1,117 @@
+﻿{   
+	
+	propertyEditors: [      
+        {
+        	
+        	alias: "pmg.Currency",
+        	name: "Currency Input",
+        	editor: {
+        		view: "~/App_Plugins/PMGCurrency/currency.html",
+                valueType: "STRING",
+                hideLabel: false
+        	},
+            prevalues: {
+                fields: [
+                    {
+                        label: "1000's seperator",
+                        description: "Thousands Separator.  Default is ,",
+                        key: "aSep",
+                        view: "textstring",
+                        value: ","
+                    },
+                    {
+                        label: "Digit Grouping",
+                        description: "Controls the digital grouping and the placement of the thousand separator. Default is 3.",
+                        key: "dGroup",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Decimal Character",
+                        description: "Controls the decmial character.  Default is .",
+                        key: "aDec",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Alternate Decimal",
+                        description: "This was developed to accommodate for different keyboard layouts. altDec allows you to declare an alternative key to enter the decimal separator assigned in aDec",
+                        key: "aldDec",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Currency Symbol",
+                        description: "Displays the desired currency symbol (examples: € or EUR). Note: other symbols can be used, such as %, °C, °F, km/h & MPH the possibilities are endless. Default is $.",
+                        key: "aSign",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Currency Symbol Placement",
+                        description: "Show currency symbol in front or behind.  p for prefex.  s for suffix.  Default is p",
+                        key: "pSign",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Minimum Value",
+                        description: "Minimum value to be entered.  Default is 0.",
+                        key: "vMin",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Maximum Value",
+                        description: "Maximum value allowed.  Default is 999999999.99.",
+                        key: "vMax",
+                        view: "textstring"
+                    },
+                    {
+                        label: "vMin/vMax decimal override.",
+                        description: "Overrides the decimal places that that are set via the vMin/vMax values.  Default null.",
+                        key: "mDec",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Rounding Method",
+                        description: "Sets the rounding method used (9 different available).  'S' Round-Half-Up Symmetric (default)",
+                        key: "mRound",
+                        view: "textstring"
+                    },
+                     {
+                        label: "Padding",
+                        description: "Controls padding of the decimal places.  Default(true)",
+                        key: "aPad",
+                        view: "boolean"
+                    },
+                    {
+                        label: "Bracket",
+                        description: "Controls if negative values are display with brackets when the input does not have focus.  Default is null.  Format (,) or [,] etc",
+                        key: "nBracket",
+                        view: "textstring"
+                    },
+                     {
+                        label: "Empty Display",
+                        description: "Controls input display behavior.  'empty', 'zero', or 'sign'.  Default is empty.",
+                        key: "wEmpty",
+                        view: "textstring"
+                    },
+                    {
+                        label: "Leading Zero",
+                        description: "Controls leading zero display: allow, deny, or keep.  Default is allow.",
+                        key: "lZero",
+                        view: "textstring"
+                    }
+                    
+                ]
+}
+             
+        }
+	]
+    ,
+	//array of files we want to inject into the application on app_start
+	javascript: [
+    
+        '~/App_Plugins/PMGCurrency/currency.controller.js'
+        
+       
+	],
+    css: [
+        '~/App_Plugins/PMGCurrency/currency.css'
+]
+}

@@ -1,0 +1,14 @@
+{
+  propertyEditors: [
+  {
+    alias: "PSP.ExampleCheckboxListController",
+    name: "Example Checkbox List Controller",
+    editor: {
+      view: "~/App_Plugins/ExampleCheckboxList/examplecheckboxlist.html"
+    }    
+  }],
+  javascript: [	
+	'~/App_Plugins/ExampleCheckboxList/examplecheckboxlist.controller.js',
+	'~/App_Plugins/ExampleCheckboxList/examplecheckboxlist.resource.js'
+  ]
+}
